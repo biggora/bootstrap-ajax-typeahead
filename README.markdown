@@ -23,7 +23,7 @@ To make a regular typeahead plugin query a server for the source, just specify a
 
 There are a few options to make this a bit more flexible.
 
-- <pre>ajax.timeout</pre>
+- <code>ajax.timeout</code>
   Specify the amount of time to wait for keyboard input to stop until you send the query to the server. Default is at 300ms.
 
 - ajax.displayField
@@ -43,7 +43,7 @@ There are a few options to make this a bit more flexible.
 - ajax.preProcess
   This function will be run right after a call and before the typeahead list is populated. It is used to pre process the data returned from the server. Its only argument is the data from the server. Returning false from this method will hide the typeahead list. If not specified, the data will be passed to the typeahead mechanism as is.
 
-<code>
+<pre>
 	$("#ajax-typeahead").typeahead({
 		ajax: {
 			url: "/path/to/source"
@@ -69,7 +69,7 @@ There are a few options to make this a bit more flexible.
 			}
 		}
 	});
-</code>
+</pre>
 
 Enjoy!
  
