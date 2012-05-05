@@ -23,52 +23,52 @@ To make a regular typeahead plugin query a server for the source, just specify a
 
 There are a few options to make this a bit more flexible.
 
-- <code>ajax.timeout</code>
+- `ajax.timeout`
   Specify the amount of time to wait for keyboard input to stop until you send the query to the server. Default is at 300ms.
 
-- ajax.displayField
+- `ajax.displayField`
   If the data returned from the server is a list of objects (as opposed to an array of strings), set this member to the name for the field to use for display.
 
-- ajax.triggerLength
+- `ajax.triggerLength`
   This is the minimum length of text to take action on. Default is at 3.
 
-- ajax.loadingClass
+- `ajax.loadingClass`
   If a call is in progress, this class will be added to the typeahead element. It is removed if the call is done.
 
-- ajax.preDispatch
+- `ajax.preDispatch`
   This function will be run prior to any call. It is used to fashion a custom parameter object to send to the server. Its only argument is the query text. It must return an object that jQuery's post() function will use as its second argument. There's no default for this and the parameters send to the server are:
   
 	{ query: "some text" }
 
-- ajax.preProcess
+- `ajax.preProcess`
   This function will be run right after a call and before the typeahead list is populated. It is used to pre process the data returned from the server. Its only argument is the data from the server. Returning false from this method will hide the typeahead list. If not specified, the data will be passed to the typeahead mechanism as is.
 
 <pre>
-	$("#ajax-typeahead").typeahead({
-		ajax: {
-			url: "/path/to/source"
-			timeout: 500,
-			displayField: "name",
-			triggerLength: 1,
-			loadingClass: "loading-circle",
-			preDispatch: function (query) {
-				showLoadingMask(true);
-				return {
-					search: query,
-					otherParam: 123
-				}
-			},
-			preProcess: function (data) {
-				showLoadingMask(false);
-				if (data.success === false) {
-					// Hide the list, there was some error
-					return false;
-				}
-				// We good!
-				return data.mylist;
+$("#ajax-typeahead").typeahead({
+	ajax: {
+		url: "/path/to/source"
+		timeout: 500,
+		displayField: "name",
+		triggerLength: 1,
+		loadingClass: "loading-circle",
+		preDispatch: function (query) {
+			showLoadingMask(true);
+			return {
+				search: query,
+				otherParam: 123
 			}
+		},
+		preProcess: function (data) {
+			showLoadingMask(false);
+			if (data.success === false) {
+				// Hide the list, there was some error
+				return false;
+			}
+			// We good!
+			return data.mylist;
 		}
-	});
+	}
+});
 </pre>
 
 Enjoy!
