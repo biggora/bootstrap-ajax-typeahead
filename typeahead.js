@@ -120,14 +120,14 @@
 				if (this.ajax.xhr) {
 					this.ajax.xhr.abort();
 					this.ajax.xhr = null;
+					this.ajaxToggleLoadClass(false);
 				}
 				return this.shown ? this.hide() : this
 			}
 	
 			function execute() {
-				if (this.ajax.loadingClass) {
-					this.$element.toggleClass(this.ajax.loadingClass, true);
-				}
+				this.ajaxToggleLoadClass(true);
+				
 				// Cancel last call if already in progress
 				if (this.ajax.xhr) this.ajax.xhr.abort();
 				
@@ -144,9 +144,7 @@
 		},
 	
 		ajaxSource: function (data) {
-			if (this.ajax.loadingClass) {
-				this.$element.toggleClass(this.ajax.loadingClass, false);
-			}
+			this.ajaxToggleLoadClass(false);
 	
 			var that = this, items
 			
@@ -173,6 +171,11 @@
 	
 			this.ajax.xhr = null;
 			return this.render(items.slice(0, this.options.items)).show()
+		},
+		
+		ajaxToggleLoadClass: function (enable) {
+			if (!this.ajax.loadingClass) return;
+			this.$element.toggleClass(this.ajax.loadingClass, enable);
 		},
 
 		lookup: function (event) {
