@@ -13,17 +13,17 @@ To make a regular typeahead plugin query a server for the source, just specify a
 
 ### Simple use
 
+For a quick setup, specify a source url to pull data from.
+
 ```javascript
 $("#ajax-typeahead").typeahead({
-	ajax: {
-		url: "/path/to/source"
-	}
+	ajax: "/path/to/source"
 });
 ```
 
 ### Options
 
-There are a few options to make this a bit more flexible.
+There are a few options to make this a bit more flexible. To use these, make the ajax option into an object containing any of these options:
 
 - `ajax.timeout`
   Specify the amount of time to wait for keyboard input to stop until you send the query to the server. Default is at 300ms.

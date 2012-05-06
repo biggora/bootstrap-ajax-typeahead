@@ -40,6 +40,9 @@
 		this.$menu = $(this.options.menu).appendTo('body')
 		if (this.options.ajax) {
 			var ajax = this.options.ajax;
+			if (typeof ajax == "string") {
+				ajax = { url:ajax };
+			}
 			this.ajax = {
 				url : ajax.url,
 				timeout : ajax.timeout || 300,
