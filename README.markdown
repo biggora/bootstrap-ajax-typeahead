@@ -13,11 +13,13 @@ To make a regular typeahead plugin query a server for the source, just specify a
 
 ### Simple use
 
-	$("#ajax-typeahead").typeahead({
-		ajax: {
-			url: "/path/to/source"
-		}
-	});
+```javascript
+$("#ajax-typeahead").typeahead({
+	ajax: {
+		url: "/path/to/source"
+	}
+});
+```
 
 ### Options
 
@@ -43,7 +45,7 @@ There are a few options to make this a bit more flexible.
 - `ajax.preProcess`
   This function will be run right after a call and before the typeahead list is populated. It is used to pre process the data returned from the server. Its only argument is the data from the server. Returning false from this method will hide the typeahead list. If not specified, the data will be passed to the typeahead mechanism as is.
 
-<pre>
+```javascript
 $("#ajax-typeahead").typeahead({
 	ajax: {
 		url: "/path/to/source"
@@ -69,7 +71,7 @@ $("#ajax-typeahead").typeahead({
 		}
 	}
 });
-</pre>
+```
 
 Enjoy!
  
