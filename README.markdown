@@ -34,15 +34,15 @@ There are a few options to make this a bit more flexible.
 - `ajax.triggerLength`
   This is the minimum length of text to take action on. Default is at 3.
 
+- `ajax.method`
+  The method to use, either "post" or "get". Defaults to "post".
+
 - `ajax.loadingClass`
   If a call is in progress, this class will be added to the typeahead element. It is removed if the call is done.
 
 - `ajax.preDispatch`
   This function will be run prior to any call. It is used to fashion a custom parameter object to send to the server. Its only argument is the query text. It must return an object that jQuery's post() function will use as its second argument. There's no default for this. If not specified, the parameters send to the server are:
 
-- `ajax.method`
-  The method to use, either "post" or "get". Defaults to "post".
-  
 ```javascript
 { query: "some text" }
 ```
