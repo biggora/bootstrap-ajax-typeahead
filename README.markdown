@@ -39,6 +39,9 @@ There are a few options to make this a bit more flexible.
 
 - `ajax.preDispatch`
   This function will be run prior to any call. It is used to fashion a custom parameter object to send to the server. Its only argument is the query text. It must return an object that jQuery's post() function will use as its second argument. There's no default for this. If not specified, the parameters send to the server are:
+
+- `ajax.method`
+  The method to use, either "post" or "get". Defaults to "post".
   
 ```javascript
 { query: "some text" }
@@ -56,6 +59,7 @@ $("#ajax-typeahead").typeahead({
 		timeout: 500,
 		displayField: "name",
 		triggerLength: 1,
+		method: "get",
 		loadingClass: "loading-circle",
 		preDispatch: function (query) {
 			showLoadingMask(true);
