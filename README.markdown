@@ -14,11 +14,13 @@ To make a regular typeahead plugin query a server for the source, just specify a
 ### Simple use
 
 ```javascript
+
 $("#ajax-typeahead").typeahead({
 	ajax: {
 		url: "/path/to/source"
 	}
 });
+
 ```
 
 ### Options
