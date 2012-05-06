@@ -1,9 +1,6 @@
 Ajax Typeahead
 ============
 
-Summary
--------
-
 Modifications to the Bootstrap Typeahead plugin to give it ajax capabilities
 
 How to Use
