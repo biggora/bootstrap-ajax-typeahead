@@ -14,13 +14,11 @@ To make a regular typeahead plugin query a server for the source, just specify a
 ### Simple use
 
 ```javascript
-
 $("#ajax-typeahead").typeahead({
 	ajax: {
 		url: "/path/to/source"
 	}
 });
-
 ```
 
 ### Options
@@ -43,7 +41,7 @@ There are a few options to make this a bit more flexible.
   This function will be run prior to any call. It is used to fashion a custom parameter object to send to the server. Its only argument is the query text. It must return an object that jQuery's post() function will use as its second argument. There's no default for this. If not specified, the parameters send to the server are:
   
 ```javascript
-	{ query: "some text" }
+{ query: "some text" }
 ```
 
 - `ajax.preProcess`
