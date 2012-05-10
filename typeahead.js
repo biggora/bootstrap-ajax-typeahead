@@ -47,7 +47,7 @@
 				url : ajax.url,
 				timeout : ajax.timeout || 300,
 				method: ajax.method || "post",
-				triggerLength : ajax.triggerLength || 1,
+				triggerLength : ajax.triggerLength || 3,
 				loadingClass : ajax.loadingClass || null,
 				displayField : ajax.displayField || null,
 				preDispatch : ajax.preDispatch || null,
