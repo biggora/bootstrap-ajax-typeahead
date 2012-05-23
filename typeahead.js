@@ -51,7 +51,7 @@
 				loadingClass : ajax.loadingClass || null,
 				displayField : ajax.displayField || null,
 				preDispatch : ajax.preDispatch || null,
-				preProcess : ajax.preProcess || null,
+				preProcess : ajax.preProcess || null
 			}
 			this.query = "";
 		} else {
