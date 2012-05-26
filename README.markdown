@@ -52,7 +52,7 @@ There are a few options to make this a bit more flexible. To use these, make the
 ```javascript
 $("#ajax-typeahead").typeahead({
 	ajax: {
-		url: "/path/to/source"
+		url: "/path/to/source",
 		timeout: 500,
 		displayField: "name",
 		triggerLength: 1,
