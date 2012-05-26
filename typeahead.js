@@ -56,6 +56,7 @@
 			this.query = "";
 		} else {
 			this.source = this.options.source
+			this.ajax = null;
 		}
 		this.shown = false
 		this.listen()
@@ -211,7 +212,7 @@
 				item
 			
 			while (item = items.shift()) {
-				if (this.ajax.displayField) {
+				if (this.ajax && this.ajax.displayField) {
 					item = item[this.ajax.displayField]
 				}
 				if (!item.toLowerCase().indexOf(this.query.toLowerCase())) beginswith.push(item)
