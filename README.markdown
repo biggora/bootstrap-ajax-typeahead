@@ -28,6 +28,9 @@ There are a few options to make this a bit more flexible. To use these, make the
 - `ajax.displayField`
   If the data returned from the server is a list of objects (as opposed to an array of strings), set this member to the name for the field to use for display.
 
+- `ajax.valueField`
+  If the data returned from the server is a list of objects (as opposed to an array of strings), set this member to the id data for the item into list (*required* for a list of objects).
+
 - `ajax.triggerLength`
   This is the minimum length of text to take action on. Default is at 3.
 
@@ -51,10 +54,14 @@ There are a few options to make this a bit more flexible. To use these, make the
 
 ```javascript
 $("#ajax-typeahead").typeahead({
+	onSelect: function(item) {
+		console.log(item);
+	},
 	ajax: {
 		url: "/path/to/source",
 		timeout: 500,
 		displayField: "name",
+		valueField: "id",
 		triggerLength: 1,
 		method: "get",
 		loadingClass: "loading-circle",
@@ -79,7 +86,7 @@ $("#ajax-typeahead").typeahead({
 ```
 
 Enjoy!
- 
+
 Contact
 -------
 
