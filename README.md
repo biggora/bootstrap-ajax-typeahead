@@ -308,10 +308,10 @@ Ajax Options
         <td>
             method
         </td>
-		<td>
+	<td>
             string
         </td>
-		<td>
+	<td>
             'get'
         </td>
         <td>
@@ -336,7 +336,7 @@ Ajax Options
         <td>
             loadingClass
         </td>
-		<td>
+	<td>
             string
         </td>
         <td>
@@ -350,7 +350,7 @@ Ajax Options
         <td>
             preDispatch
         </td>
-		<td>
+	<td>
             function
         </td>
         <td>
@@ -370,7 +370,7 @@ Ajax Options
         <td>
             preProcess
         </td>
-		<td>
+	<td>
             function
         </td>
         <td>
@@ -387,10 +387,10 @@ Ajax Options
         <td>
             displayField
         </td>
-		<td>
+	<td>
             string
         </td>
-		<td>
+	<td>
             'name'
         </td>
         <td>
@@ -402,10 +402,10 @@ Ajax Options
         <td>
             valueField
         </td>
-		<td>
+	<td>
             string
         </td>
-		<td>
+	<td>
             'id'
         </td>
         <td>
@@ -415,17 +415,25 @@ Ajax Options
     </tr>
 </table>
 
-### Simple use Ajax
-
-For a quick setup, specify a source url to pull data from.
-
+Basic Usage
+-----------------
+The plugin in its simplest (realistic) form.
 ```javascript
-$("#ajax-typeahead").typeahead({
-	ajax: "/path/to/source"
+var typeaheadSource = [{ id: 1, name: 'John'}, { id: 2, name: 'Alex'}, { id: 3, name: 'Terry'}];
+
+$('input.typeahead').typeahead({
+	source: typeaheadSource
+});
+```
+For a quick setup, specify a source url to pull data from:
+```javascript
+$('input.typeahead').typeahead({
+        ajax: '/path/to/typeahead/source'
 });
 ```
 
-### Example
+Extended Usage
+-----------------
 
 ```javascript
 $("#ajax-typeahead").typeahead({
