@@ -150,7 +150,7 @@ Options
             null
         </td>
         <td>
-            <a href="#ajax">The object required to use a remote datasource.</a>  
+            <a href="#ajax">The object required to use a remote datasource.</a>
             <br /><i>See also: ajax as a string (below)</i>
         </td>
     </tr>
@@ -165,7 +165,7 @@ Options
             null
         </td>
         <td>
-            Optionally, a simple URL may be used instead of the AJAX object. <br />   
+            Optionally, a simple URL may be used instead of the AJAX object. <br />
             <a href="#ajax"><i>See also: ajax as an object</i></a>
         </td>
     </tr>
@@ -287,7 +287,7 @@ Ajax Options
             null
         </td>
         <td>
-            
+
         </td>
     </tr>
     <tr>
@@ -344,7 +344,7 @@ Ajax Options
             null
         </td>
         <td>
-	
+
         </td>
     </tr>
     <tr>
@@ -358,9 +358,9 @@ Ajax Options
             null
         </td>
         <td>
-	This function will be run prior to any call. It is used to fashion a custom parameter 
-	object to send to the server. Its only argument is the query text. It must return an 
-	object that jQuery's post() function will use as its second argument. There's no default for this. 
+	This function will be run prior to any call. It is used to fashion a custom parameter
+	object to send to the server. Its only argument is the query text. It must return an
+	object that jQuery's post() function will use as its second argument. There's no default for this.
 	If not specified, the parameters send to the server are:
         <pre>
             { query: "some text" }
@@ -378,9 +378,9 @@ Ajax Options
            null
         </td>
         <td>
-	This function will be run right after a call and before the typeahead list is populated. 
-	It is used to pre process the data returned from the server. Its only argument is the data 
-	from the server. Returning false from this method will hide the typeahead list. 
+	This function will be run right after a call and before the typeahead list is populated.
+	It is used to pre process the data returned from the server. Its only argument is the data
+	from the server. Returning false from this method will hide the typeahead list.
 	If not specified, the data will be passed to the typeahead mechanism as is.
         </td>
     </tr>
@@ -395,7 +395,7 @@ Ajax Options
             'name'
         </td>
         <td>
-        If the data returned from the server is a list of objects (as opposed to an array of strings), 
+        If the data returned from the server is a list of objects (as opposed to an array of strings),
         set this member to the name for the field to use for display.
         </td>
     </tr>
@@ -410,7 +410,7 @@ Ajax Options
             'id'
         </td>
         <td>
-          If the data returned from the server is a list of objects (as opposed to an array of strings), 
+          If the data returned from the server is a list of objects (as opposed to an array of strings),
           set this member to the id data for the item into list (*required* for a list of objects).
         </td>
     </tr>
@@ -472,8 +472,8 @@ Bootstrap Integration
 
 For simple autocomplete use cases, the typeahead component [Bootstrap][bootstrap] provides should suffice. However, if you'd prefer to take advantage of some of the advance features typeahead.js provides, here's what you'll need to do to integrate typeahead.js with Bootstrap:
 
-* If you're customizing Bootstrap, exclude the typeahead component. If you're depending on the standard *bootstrap.js*, ensure *typeahead.js* is loaded after it.
-* The DOM structure of the dropdown menu used by typeahead.js differs from the DOM structure of the Bootstrap dropdown menu. You'll need to load some [additional CSS][typeahead.js-bootstrap.css] in order to get the typeahead.js dropdown menu to fit the default Bootstrap theme.
+* If you're customizing Bootstrap, exclude the typeahead component. If you're depending on the standard *bootstrap.js*, ensure *bootstrap-typeahead.js* is loaded after it.
+* The DOM structure of the dropdown menu used by typeahead.js differs from the DOM structure of the Bootstrap dropdown menu. You'll need to load some [additional CSS][typeahead-bootstrap.css] in order to get the bootstrap-typeahead.js dropdown menu to fit the default Bootstrap theme.
 
 Browser Support
 ---------------
@@ -488,3 +488,19 @@ Contact
 -------
 
 pwarelis at gmail dot com
+
+License
+-------
+Copyright 2012 Twitter, Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.

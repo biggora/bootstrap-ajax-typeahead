@@ -18,9 +18,7 @@
  * ============================================================ */
 
 /*
- *
  * Modifications by Paul Warelis, Alexey Gordeyev
- *
  */
 
 !function($){
