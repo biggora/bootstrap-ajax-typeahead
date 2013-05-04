@@ -146,6 +146,141 @@ Options
             object
         </td>
         <td>
+            null
+        </td>
+        <td>
+            <a href="#ajax">The object required to use a remote datasource.</a>  <br /><i>See also: ajax as a string (below)</i>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            ajax
+        </td>
+        <td>
+            string
+        </td>
+        <td>
+            null
+        </td>
+        <td>
+            Optionally, a simple URL may be used instead of the AJAX object. <br />   <i>See also: ajax as an object (above)</i>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            display
+        </td>
+		<td>
+            string
+        </td>
+		<td>
+            'name'
+        </td>
+        <td>
+            The object property to match the query against and highlight in the results.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            item
+        </td>
+		<td>
+            string
+        </td>
+        <td>
+            '&lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;/a&gt;&lt;/li&gt;'
+        </td>
+        <td>
+			The HTML rendering for a result item.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            items
+        </td>
+		<td>
+            integer
+        </td>
+        <td>
+            8
+        </td>
+        <td>
+			The maximum number of items to show in the results.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            menu
+        </td>
+		<td>
+            string
+        </td>
+        <td>
+            '&lt;ul class=&quot;typeahead dropdown-menu&quot;&gt;&lt;/ul&gt;'
+        </td>
+        <td>
+			The HTML rendering for the results list.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            source
+        </td>
+		<td>
+            object
+        </td>
+        <td>
+           []
+        </td>
+        <td>
+			The source to search against.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            val
+        </td>
+		<td>
+            string
+        </td>
+		<td>
+            'id'
+        </td>
+        <td>
+            The object property that is returned when an item is selected.
+        </td>
+    </tr>
+</table>
+
+<a name="ajax"></a>
+Ajax Options
+-----------------
+
+<table width="100%">
+<thead>
+	<tr>
+		<th>
+			Name
+		</th>
+		<th>
+			Type
+		</th>
+		<th>
+			Default
+		</th>
+		<th>
+			Description
+		</th>
+	</tr>
+</thead>
+    <tr>
+        <td>
+            ajax
+        </td>
+        <td>
+            object
+        </td>
+        <td>
            
         </td>
         <td>
