@@ -16,24 +16,24 @@ Required
 Installation
 -----------------
 #### Download [Bootstrap](https://github.com/twitter/bootstrap)
-* [Download the latest release](https://github.com/twitter/bootstrap/zipball/master).
-* [Clone in Windows](github-windows://openRepo/https://github.com/twitter/bootstrap)
-* Clone the repo: `git clone git://github.com/twitter/bootstrap.git`.
-* Install with Twitter's [Bower](http://twitter.github.com/bower): `bower install bootstrap`.
+##### [Download the latest release](https://github.com/twitter/bootstrap/zipball/master).
+##### [Clone in Windows](github-windows://openRepo/https://github.com/twitter/bootstrap)
+##### Clone the repo: `git clone git://github.com/twitter/bootstrap.git`.
+##### Install with Twitter's [Bower](http://twitter.github.com/bower): `bower install bootstrap`.
 
 #### Download [jQuery](http://docs.jquery.com/Downloading_jQuery)
-* [Download the latest release](http://docs.jquery.com/Downloading_jQuery)
-* Using jQuery's CDN:
-<code>
+##### [Download the latest release](http://docs.jquery.com/Downloading_jQuery)
+##### Using jQuery's CDN:
+
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/jquery-migrate-1.1.1.min.js"></script>
-</code>
+
 
 #### Download this plugin.
 
-* [Download the latest release](https://github.com/biggora/bootstrap-ajax-typeahead/zipball/master)
-* [Clone in Windows](github-windows://openRepo/https://github.com/biggora/bootstrap-ajax-typeahead)
-* Clone the repo: `git clone git://github.com/biggora/bootstrap-ajax-typeahead.git`
+##### [Download the latest release](https://github.com/biggora/bootstrap-ajax-typeahead/zipball/master)
+##### [Clone in Windows](github-windows://openRepo/https://github.com/biggora/bootstrap-ajax-typeahead)
+##### Clone the repo: `git clone git://github.com/biggora/bootstrap-ajax-typeahead.git`
 
 #### Include files in your HTML. The minimum required for this plugin are:
 
