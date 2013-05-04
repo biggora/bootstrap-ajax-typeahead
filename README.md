@@ -146,16 +146,7 @@ Options
             object
         </td>
         <td>
-        <pre>{
-    url: null,
-    timeout: 300,
-    method: 'post',
-    triggerLength: 3,
-    loadingClass: null,
-    displayField: null,
-    preDispatch: null,
-    preProcess: null
-}</pre>
+           
         </td>
         <td>
             The object required to use a remote datasource.  <br /><i>See also: ajax as a string (below)</i>
@@ -261,7 +252,7 @@ Options
     </tr>
 </table>
 
-### Simple use
+### Simple use Ajax
 
 For a quick setup, specify a source url to pull data from.
 
@@ -270,31 +261,6 @@ $("#ajax-typeahead").typeahead({
 	ajax: "/path/to/source"
 });
 ```
-
-### Options
-
-There are a few options to make this a bit more flexible. To use these, make the ajax option into an object containing any of these options:
-
-- `ajax.timeout`
-  Specify the amount of time to wait for keyboard input to stop until you send the query to the server. Default is at 300ms.
-
-- `ajax.displayField`
-  If the data returned from the server is a list of objects (as opposed to an array of strings), set this member to the name for the field to use for display.
-
-- `ajax.valueField`
-  If the data returned from the server is a list of objects (as opposed to an array of strings), set this member to the id data for the item into list (*required* for a list of objects).
-
-- `ajax.triggerLength`
-  This is the minimum length of text to take action on. Default is at 3.
-
-- `ajax.method`
-  The method to use, either "post" or "get". Defaults to "post".
-
-- `ajax.loadingClass`
-  If a call is in progress, this class will be added to the typeahead element. It is removed if the call is done.
-
-- `ajax.preDispatch`
-  This function will be run prior to any call. It is used to fashion a custom parameter object to send to the server. Its only argument is the query text. It must return an object that jQuery's post() function will use as its second argument. There's no default for this. If not specified, the parameters send to the server are:
 
 ```javascript
 { query: "some text" }
