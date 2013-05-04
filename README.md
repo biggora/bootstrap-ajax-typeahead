@@ -360,6 +360,10 @@ Ajax Options
 	object to send to the server. Its only argument is the query text. It must return an 
 	object that jQuery's post() function will use as its second argument. There's no default for this. 
 	If not specified, the parameters send to the server are:
+
+```javascript
+{ query: "some text" }
+```
         </td>
     </tr>
     <tr>
@@ -420,13 +424,6 @@ $("#ajax-typeahead").typeahead({
 	ajax: "/path/to/source"
 });
 ```
-
-```javascript
-{ query: "some text" }
-```
-
-- `ajax.preProcess`
-  This function will be run right after a call and before the typeahead list is populated. It is used to pre process the data returned from the server. Its only argument is the data from the server. Returning false from this method will hide the typeahead list. If not specified, the data will be passed to the typeahead mechanism as is.
 
 ### Example
 
