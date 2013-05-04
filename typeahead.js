@@ -40,7 +40,7 @@
 		that.updater = that.options.updater || that.updater
 		that.onSelect = that.options.onSelect || null;
 		that.display = that.options.display || that.display;
-		that.$menu = $(that.options.menu).insertAfter(this.$element);
+		that.$menu = $(that.options.menu).insertAfter(that.$element);
 		if (that.options.ajax) {
 			var ajax = that.options.ajax;
 
