@@ -83,31 +83,32 @@
             var isSupported = (eventName in this.$element);
 
             if (!isSupported) {
-              this.$element.setAttribute(eventName, 'return;');
-              isSupported = typeof this.$element[eventName] === 'function';
+                this.$element.setAttribute(eventName, 'return;');
+                isSupported = typeof this.$element[eventName] === 'function';
             }
 
             return isSupported;
         },
         select: function () {
-            var item, value, text;
-            if (this.options.ajax.valueField) {
-                var index = this.$menu.find('.active').attr('data-index');
-                value = this.$menu.find('.active').attr('data-value');
-                text  = this.$menu.find('.active').attr('data-text');
+            var item, text;
+            var $selectedItem = this.$menu.find('.active');
+            var index = $selectedItem.attr('data-index');
+            var value = $selectedItem.attr('data-value');
 
+            if (this.options.ajax.valueField) {
+
+                text  = $selectedItem.attr('data-text');
                 item = this.ajax.data[index];
 
                 if (this.options.onSelect) {
                     this.options.onSelect(item);
                 }
-
+                this.options.itemSelected($selectedItem, value, text);
                 this.$element
                 .val(this.updater(text, item))
                 .change();
                 return this.hide();
             } else {
-                value = this.$menu.find('.active').attr('data-value');
                 text = this.$menu.find('.active a').text();
 
                 if (this.options.onSelect) {
@@ -116,7 +117,7 @@
                         text: text
                     });
                 }
-
+                this.options.itemSelected($selectedItem, value, text);
                 this.$element
                 .val(this.updater(text))
                 .change;
@@ -328,7 +329,7 @@
         //
         grepper: function(data) {
             var that = this,
-                items;
+            items;
 
             if (data && data.length && !data[0].hasOwnProperty(that.options.display)) {
                 return null;
