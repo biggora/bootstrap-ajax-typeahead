@@ -436,23 +436,21 @@ Extended Usage
 -----------------
 
 ```javascript
-$("#ajax-typeahead").typeahead({
+$("input.typeahead").typeahead({
 	onSelect: function(item) {
 		console.log(item);
 	},
 	ajax: {
 		url: "/path/to/source",
 		timeout: 500,
-		displayField: "name",
-		valueField: "id",
+		displayField: "title",
 		triggerLength: 1,
 		method: "get",
 		loadingClass: "loading-circle",
 		preDispatch: function (query) {
 			showLoadingMask(true);
 			return {
-				search: query,
-				otherParam: 123
+				search: query
 			}
 		},
 		preProcess: function (data) {
