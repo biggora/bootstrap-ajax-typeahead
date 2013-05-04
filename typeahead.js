@@ -31,26 +31,28 @@
 	 * ================================= */
 
 	var Typeahead = function (element, options) {
-		this.$element = $(element)
-		this.options = $.extend({}, $.fn.typeahead.defaults, options)
-		this.matcher = this.options.matcher || this.matcher
-		this.sorter = this.options.sorter || this.sorter
-		this.highlighter = this.options.highlighter || this.highlighter
-		this.updater = this.options.updater || this.updater
-		this.onSelect = this.options.onSelect || null;
-		this.$menu = $(this.options.menu).appendTo('body')
-		if (this.options.ajax) {
-			var ajax = this.options.ajax;
+		var that = this;
+		that.$element = $(element)
+		that.options = $.extend({}, $.fn.typeahead.defaults, options)
+		that.matcher = that.options.matcher || that.matcher
+		that.sorter = that.options.sorter || that.sorter
+		that.highlighter = that.options.highlighter || that.highlighter
+		that.updater = that.options.updater || that.updater
+		that.onSelect = that.options.onSelect || null;
+		that.display = that.options.display || that.display;
+		that.$menu = $(that.options.menu).appendTo('body')
+		if (that.options.ajax) {
+			var ajax = that.options.ajax;
 
 			if (typeof ajax == "string") {
 				ajax = { url:ajax };
 			}
 
-			this.ajax = {
+			that.ajax = {
 				url : ajax.url,
 				timeout : ajax.timeout || 300,
 				method: ajax.method || "get",
-				triggerLength : ajax.triggerLength || 3,
+				triggerLength : ajax.triggerLength || 1,
 				loadingClass : ajax.loadingClass || null,
 				displayField : ajax.displayField || null,
 				valueField : ajax.valueField || null,
@@ -58,13 +60,13 @@
 				preProcess : ajax.preProcess || null
 			}
 
-			this.query = "";
+			that.query = "";
 		} else {
-			this.source = this.options.source
-			this.ajax = null;
+			that.source = that.options.source
+			that.ajax = null;
 		}
-		this.shown = false
-		this.listen()
+		that.shown = false
+		that.listen()
 	}
 
 	Typeahead.prototype = {
