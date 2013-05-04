@@ -311,7 +311,7 @@
 					.attr('data-text' , text);
 
 
-				el.find('a').html(that.highlighter(text));
+				el.find('a').html(that.highlighter(item));
 				return el[0];
 			})
 
