@@ -30,7 +30,7 @@ THE SOFTWARE.
         <link href="http://twitter.github.io/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
         <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
         <script src="https://raw.github.com/appendto/jquery-mockjax/master/jquery.mockjax.js"></script>
-        <script src="https://raw.github.com/biggora/bootstrap-ajax-typeahead/master/js/bootstrap-typeahead.js"></script>
+        <script src="../js/bootstrap-typeahead.js"></script>
     </head>
     <body class="container">
         <h1>Twitter Bootstrap Typeahead Extension Demo</h1>
@@ -130,9 +130,8 @@ THE SOFTWARE.
             </pre>
         </div>
         <script>
-            function displayResult(item, val, text) {
-                console.log(item);
-                $('.alert').show().html('You selected <strong>' + val + '</strong>: <strong>' + text + '</strong>');
+            function displayResult(item) {
+                $('.alert').show().html('You selected <strong>' + item.value + '</strong>: <strong>' + item.text + '</strong>');
             }
 
             $(function () {
@@ -149,8 +148,7 @@ THE SOFTWARE.
                         { id: 8, name: 'Vancouver' },
                         { id: 9, name: 'Seattle' },
                         { id: 10, name: 'Los Angeles' }
-                    ],
-                    itemSelected: displayResult
+                    ]
                 });
 
                 $('#demo2').typeahead({
@@ -168,7 +166,7 @@ THE SOFTWARE.
                     ],
                     display: 'Name',
                     val: 'ID',
-                    itemSelected: displayResult
+                    onSelect: displayResult
                 });
 
                 $('#demo3').typeahead({
@@ -185,7 +183,7 @@ THE SOFTWARE.
                         { id: 10, full_name: 'Los Angeles', first_two_letters: 'Lo' }
                     ],
                     display: 'full_name',
-                    itemSelected: displayResult
+                    onSelect: displayResult
                 });
 
                 // Mock an AJAX request
@@ -205,12 +203,12 @@ THE SOFTWARE.
 
                 $('#demo4').typeahead({
                     ajax: '/cities/list',
-                    itemSelected: displayResult
+                    onSelect: displayResult
                 });
 
                 $('#demo5').typeahead({
                     ajax: { url: '/cities/list', triggerLength: 1 },
-                    itemSelected: displayResult
+                    onSelect: displayResult
                 });
             });
         </script>

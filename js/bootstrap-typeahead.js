@@ -54,6 +54,13 @@
                     url: ajax
                 });
             } else {
+                if(typeof ajax.displayField === 'string') {
+                    that.display = that.options.display = ajax.displayField;
+                }
+                if(typeof ajax.valueField === 'string') {
+                    that.val = that.options.val = ajax.valueField;
+                }
+
                 that.ajax = $.extend({}, $.fn.typeahead.defaults.ajax, ajax);
             }
 
@@ -73,9 +80,7 @@
 
         constructor: Typeahead,
         //=============================================================================================================
-        //
         //  Utils
-        //
         //  Check if an event is supported by the browser eg. 'keypress'
         //  * This was included to handle the "exhaustive deprecation" of jQuery.browser in jQuery 1.8
         //=============================================================================================================
@@ -103,7 +108,6 @@
                 if (this.options.onSelect) {
                     this.options.onSelect(item);
                 }
-                this.options.itemSelected($selectedItem, value, text);
                 this.$element
                 .val(this.updater(text, item))
                 .change();
@@ -117,10 +121,9 @@
                         text: text
                     });
                 }
-                this.options.itemSelected($selectedItem, value, text);
                 this.$element
                 .val(this.updater(text))
-                .change;
+                .change();
                 return this.hide();
             }
         },
@@ -181,8 +184,8 @@
 
                 var params = this.ajax.preDispatch ? this.ajax.preDispatch(query) : {
                     query : query
-                }
-                var jAjax = (this.ajax.method == "post") ? $.post : $.get;
+                };
+                var jAjax = (this.ajax.method === "post") ? $.post : $.get;
                 this.ajax.xhr = jAjax(this.ajax.url, params, $.proxy(this.ajaxSource, this));
                 this.ajax.timerId = null;
             }
@@ -196,39 +199,23 @@
         ajaxSource: function (data) {
             this.ajaxToggleLoadClass(false);
 
-            var that = this, items
+            var that = this, items;
+            if (!that.ajax.xhr) return;
 
-            if (!this.ajax.xhr) return;
-
-            if (this.ajax.preProcess) {
-                data = this.ajax.preProcess(data);
+            if (that.ajax.preProcess) {
+                data = that.ajax.preProcess(data);
             }
             // Save for selection retreival
-            this.ajax.data = data;
+            that.ajax.data = data;
 
             // Manipulate objects
-            if (!this.ajax.displayField)
-            {
-                items = $.grep(data, function (item) {
-                    if (that.ajax.displayField) {
-                        item = item[that.ajax.displayField];
-                    }
-                    if (that.matcher(item)) return item;
-                });
-
-                items = this.sorter(items);
-            }
-            else
-            {
-                items = this.ajax.data;
-            }
-
+            items = that.grepper(that.ajax.data) || [];
             if (!items.length) {
-                return this.shown ? this.hide() : this
+                return that.shown ? that.hide() : that
             }
 
-            this.ajax.xhr = null;
-            return this.render(items.slice(0, this.options.items)).show()
+            that.ajax.xhr = null;
+            return that.render(items.slice(0, that.options.items)).show()
         },
 
         ajaxToggleLoadClass: function (enable) {
@@ -237,25 +224,26 @@
         },
 
         lookup: function (event) {
-            var that = this, items
+            var that = this, items;
 
-            this.query = this.$element.val()
-
-            if (!this.query) {
-                return this.shown ? this.hide() : this
+            if (that.ajax) {
+                that.ajaxer();
             }
+            else {
+                that.query = that.$element.val();
 
-            items = $.grep(this.source, function (item) {
-                return that.matcher(item)
-            })
+                if (!that.query) {
+                    return that.shown ? that.hide() : that;
+                }
 
-            items = this.sorter(items)
+                items = that.grepper(that.source);
 
-            if (!items.length) {
-                return this.shown ? this.hide() : this
+                if (!items || !items.length) {
+                    return that.shown ? that.hide() : that;
+                }
+
+                return that.render(items.slice(0, that.options.items)).show();
             }
-
-            return this.render(items.slice(0, this.options.items)).show()
         },
         matcher: function (item) {
             return ~item.toLowerCase().indexOf(this.query.toLowerCase())
@@ -280,56 +268,28 @@
         },
         highlighter: function (item) {
             var query = this.query.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, '\\$&');
-            var text;
-
-            if (this.options.ajax.displayField) {
-                text = item[this.options.ajax.displayField];
-            } else {
-                text = item;
-            }
-
-            return text.replace(new RegExp('(' + query + ')', 'ig'), function ($1, match) {
+            return item.replace(new RegExp('(' + query + ')', 'ig'), function ($1, match) {
                 return '<strong>' + match + '</strong>';
-            })
+            });
         },
         render: function (items) {
-            var that = this
+            var that = this;
 
             items = $(items).map(function (i, item) {
-                var value, text;
-                if (that.options.ajax.valueField)
-                {
+                i = $(that.options.item).attr('data-value', item[that.options.val]);
+                i.find('a').html(that.highlighter(item[that.options.display], item));
+                return i[0];
+            });
 
-                    value = item[that.options.ajax.valueField];
-                    text = item[that.options.ajax.displayField];
-                }
-                else
-                {
-                    value = item;
-                    text = item;
-                }
-
-                var el = $(that.options.item)
-                .attr('data-index', i)
-                .attr('data-value', value)
-                .attr('data-text' , text);
-
-
-                el.find('a').html(that.highlighter(item));
-                return el[0];
-            })
-
-            items.first().addClass('active')
-            this.$menu.html(items)
-            return this
+            items.first().addClass('active');
+            this.$menu.html(items);
+            return this;
         },
         //------------------------------------------------------------------
-        //
         //  Filters relevent results
         //
         grepper: function(data) {
-            var that = this,
-            items;
+            var that = this, items;
 
             if (data && data.length && !data[0].hasOwnProperty(that.options.display)) {
                 return null;
@@ -373,6 +333,9 @@
             this.$element.on('keydown', $.proxy(this.keypress, this))
 
             this.$menu
+            .css({
+                width : this.$element.width() * 1.05
+            })
             .on('click', $.proxy(this.click, this))
             .on('mouseenter', 'li', $.proxy(this.mouseenter, this))
         },
@@ -469,14 +432,13 @@
         item: '<li><a href="#"></a></li>',
         display: 'name',
         val: 'id',
-        itemSelected: function () { },
+        onSelect: function () {},
         ajax: {
             url: null,
             timeout: 300,
             method: 'get',
             triggerLength: 1,
             loadingClass: null,
-            displayField: null,
             preDispatch: null,
             preProcess: null
         }
