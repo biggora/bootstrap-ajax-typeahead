@@ -42,25 +42,18 @@
 		that.display = that.options.display || that.display;
 		that.$menu = $(that.options.menu).insertAfter(that.$element);
 		if (that.options.ajax) {
-			var ajax = that.options.ajax;
+                      var ajax = that.options.ajax;
 
-			if (typeof ajax == "string") {
-				ajax = { url:ajax };
-			}
+                      if (typeof ajax === 'string') {
+                         that.ajax = $.extend({}, $.fn.typeahead.defaults.ajax, { url: ajax });
+                      } else {
+                         that.ajax = $.extend({}, $.fn.typeahead.defaults.ajax, ajax);
+                      }
 
-			that.ajax = {
-				url : ajax.url,
-				timeout : ajax.timeout || 300,
-				method: ajax.method || "get",
-				triggerLength : ajax.triggerLength || 1,
-				loadingClass : ajax.loadingClass || null,
-				displayField : ajax.displayField || null,
-				valueField : ajax.valueField || null,
-				preDispatch : ajax.preDispatch || null,
-				preProcess : ajax.preProcess || null
-			}
-
-			that.query = "";
+                      if (!that.ajax.url) {
+                         that.ajax = null;
+                      }
+		      that.query = "";
 		} else {
 			that.source = that.options.source
 			that.ajax = null;
@@ -443,7 +436,20 @@
 		source: [],
 		items: 8,
 		menu: '<ul class="typeahead dropdown-menu"></ul>',
-		item: '<li><a href="#"></a></li>'
+		item: '<li><a href="#"></a></li>',
+                display: 'name',
+                val: 'id',
+                itemSelected: function () { },
+		ajax: {
+                    url: null,
+                    timeout: 300,
+                    method: 'get',
+                    triggerLength: 1,
+                    loadingClass: null,
+                    displayField: null,
+                    preDispatch: null,
+                    preProcess: null
+               }
 	}
 
 	$.fn.typeahead.Constructor = Typeahead
