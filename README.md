@@ -1,4 +1,4 @@
-Ajax Typeahead
+Twitter Bootstrap Ajax Typeahead Plugin
 ============
 
 Modifications to the Bootstrap Typeahead plugin to give it ajax capabilities
@@ -74,15 +74,16 @@ Events
     </tr>
     <tr>
         <td>
-            itemSelected
+            onSelect
         </td>
         <td>
             The callback function that is invoked when an item is chosen.
-            <ul>
-			<li>item: the HTML element that was selected</li>
-			<li>val: value of the *val* property</li>
-            <li>text: value of the *display* property</li>
-			</ul>
+<pre>{
+   item : {
+    value: "",
+    text: ""
+   }
+}</pre>
         </td>
     </tr>
     <tr>
