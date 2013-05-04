@@ -275,21 +275,7 @@ Ajax Options
 </thead>
     <tr>
         <td>
-            ajax
-        </td>
-        <td>
-            object
-        </td>
-        <td>
-           
-        </td>
-        <td>
-            The object required to use a remote datasource.  <br /><i>See also: ajax as a string (below)</i>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            ajax
+            url
         </td>
         <td>
             string
@@ -298,12 +284,102 @@ Ajax Options
             null
         </td>
         <td>
-            Optionally, a simple URL may be used instead of the AJAX object. <br />   <i>See also: ajax as an object (above)</i>
+            
         </td>
     </tr>
     <tr>
         <td>
-            display
+            timeout
+        </td>
+        <td>
+            integer
+        </td>
+        <td>
+            300
+        </td>
+        <td>
+            
+        </td>
+    </tr>
+    <tr>
+        <td>
+            method
+        </td>
+		<td>
+            string
+        </td>
+		<td>
+            'get'
+        </td>
+        <td>
+            
+        </td>
+    </tr>
+    <tr>
+        <td>
+            triggerLength
+        </td>
+	<td>
+            integer
+        </td>
+        <td>
+            1
+        </td>
+        <td>
+	    
+        </td>
+    </tr>
+    <tr>
+        <td>
+            loadingClass
+        </td>
+		<td>
+            string
+        </td>
+        <td>
+            null
+        </td>
+        <td>
+	
+        </td>
+    </tr>
+    <tr>
+        <td>
+            preDispatch
+        </td>
+		<td>
+            function
+        </td>
+        <td>
+            null
+        </td>
+        <td>
+	This function will be run prior to any call. It is used to fashion a custom parameter 
+	object to send to the server. Its only argument is the query text. It must return an 
+	object that jQuery's post() function will use as its second argument. There's no default for this. 
+	If not specified, the parameters send to the server are:
+        </td>
+    </tr>
+    <tr>
+        <td>
+            preProcess
+        </td>
+		<td>
+            function
+        </td>
+        <td>
+           null
+        </td>
+        <td>
+	This function will be run right after a call and before the typeahead list is populated. 
+	It is used to pre process the data returned from the server. Its only argument is the data 
+	from the server. Returning false from this method will hide the typeahead list. 
+	If not specified, the data will be passed to the typeahead mechanism as is.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            displayField
         </td>
 		<td>
             string
@@ -312,68 +388,12 @@ Ajax Options
             'name'
         </td>
         <td>
-            The object property to match the query against and highlight in the results.
+            The object property that is returned when an item is selected.
         </td>
     </tr>
     <tr>
         <td>
-            item
-        </td>
-		<td>
-            string
-        </td>
-        <td>
-            '&lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;/a&gt;&lt;/li&gt;'
-        </td>
-        <td>
-			The HTML rendering for a result item.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            items
-        </td>
-		<td>
-            integer
-        </td>
-        <td>
-            8
-        </td>
-        <td>
-			The maximum number of items to show in the results.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            menu
-        </td>
-		<td>
-            string
-        </td>
-        <td>
-            '&lt;ul class=&quot;typeahead dropdown-menu&quot;&gt;&lt;/ul&gt;'
-        </td>
-        <td>
-			The HTML rendering for the results list.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            source
-        </td>
-		<td>
-            object
-        </td>
-        <td>
-           []
-        </td>
-        <td>
-			The source to search against.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            val
+            valueField
         </td>
 		<td>
             string
