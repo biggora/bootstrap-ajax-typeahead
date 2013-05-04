@@ -15,21 +15,21 @@ Required
 
 Installation
 -----------------
-1) Download [Bootstrap](https://github.com/twitter/bootstrap) & [jQuery](http://docs.jquery.com/Downloading_jQuery)
+ Step #1 - Download [Bootstrap](https://github.com/twitter/bootstrap) & [jQuery](http://docs.jquery.com/Downloading_jQuery)
 
-2) Download this plugin.
+ Step #2 - Download this plugin.
 
-- [ZIP](https://github.com/biggora/bootstrap-ajax-typeahead/zipball/master)
-- [Clone in Windows](github-windows://openRepo/https://github.com/biggora/bootstrap-ajax-typeahead)
-- `git clone git://github.com/biggora/bootstrap-ajax-typeahead.git`
+   - [ZIP](https://github.com/biggora/bootstrap-ajax-typeahead/zipball/master)
+   - [Clone in Windows](github-windows://openRepo/https://github.com/biggora/bootstrap-ajax-typeahead)
+   - `git clone git://github.com/biggora/bootstrap-ajax-typeahead.git`
 
-3) Include files in your HTML. The minimum required for this plugin are:
+ Step #3 - Include files in your HTML. The minimum required for this plugin are:
 
     <link href="/path/to/bootstrap.css" rel="stylesheet">
     <script src="/path/to/jquery.js" type="text/javascript"></script>
     <script src="/path/to/bootstrap-typeahead.js" type="text/javascript"></script>
 
-4) Execute the plugin:
+ Step #4 - Execute the plugin:
 
     $(myElement).typeahead(options);
 
