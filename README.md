@@ -149,7 +149,8 @@ Options
             null
         </td>
         <td>
-            <a href="#ajax">The object required to use a remote datasource.</a>  <br /><i>See also: ajax as a string (below)</i>
+            <a href="#ajax">The object required to use a remote datasource.</a>  
+            <br /><i>See also: ajax as a string (below)</i>
         </td>
     </tr>
     <tr>
@@ -360,10 +361,9 @@ Ajax Options
 	object to send to the server. Its only argument is the query text. It must return an 
 	object that jQuery's post() function will use as its second argument. There's no default for this. 
 	If not specified, the parameters send to the server are:
-
-```javascript
-{ query: "some text" }
-```
+        <pre>
+            { query: "some text" }
+        </pre>
         </td>
     </tr>
     <tr>
