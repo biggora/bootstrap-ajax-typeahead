@@ -15,19 +15,16 @@ Required
 
 Installation
 -----------------
+#### Download [jQuery](http://docs.jquery.com/Downloading_jQuery)
+* [Download the latest release](http://docs.jquery.com/Downloading_jQuery)
+* [Clone in Windows](github-windows://openRepo/https://github.com/jquery/jquery)
+* Clone the repo: `git clone git://github.com/jquery/jquery.git`.
+
 #### Download [Bootstrap](https://github.com/twitter/bootstrap)
 * [Download the latest release](https://github.com/twitter/bootstrap/zipball/master).
 * [Clone in Windows](github-windows://openRepo/https://github.com/twitter/bootstrap)
 * Clone the repo: `git clone git://github.com/twitter/bootstrap.git`.
 * Install with Twitter's [Bower](http://twitter.github.com/bower): `bower install bootstrap`.
-
-#### Download [jQuery](http://docs.jquery.com/Downloading_jQuery)
-* [Download the latest release](http://docs.jquery.com/Downloading_jQuery)
-##### Using jQuery's CDN:
-
-    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="http://code.jquery.com/jquery-migrate-1.1.1.min.js"></script>
-
 
 #### Download this plugin.
 * [Download the latest release](https://github.com/biggora/bootstrap-ajax-typeahead/zipball/master)
