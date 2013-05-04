@@ -15,13 +15,24 @@ Required
 
 Installation
 -----------------
-#### Download [Bootstrap](https://github.com/twitter/bootstrap) & [jQuery](http://docs.jquery.com/Downloading_jQuery)
+#### Download [Bootstrap](https://github.com/twitter/bootstrap)
+* [Download the latest release](https://github.com/twitter/bootstrap/zipball/master).
+* [Clone in Windows](github-windows://openRepo/https://github.com/twitter/bootstrap)
+* Clone the repo: `git clone git://github.com/twitter/bootstrap.git`.
+* Install with Twitter's [Bower](http://twitter.github.com/bower): `bower install bootstrap`.
+
+#### Download [jQuery](http://docs.jquery.com/Downloading_jQuery)
+* [Download the latest release](http://docs.jquery.com/Downloading_jQuery)
+* Using jQuery's CDN:
+
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.1.1.min.js"></script>
 
 #### Download this plugin.
 
-   - [ZIP](https://github.com/biggora/bootstrap-ajax-typeahead/zipball/master)
-   - [Clone in Windows](github-windows://openRepo/https://github.com/biggora/bootstrap-ajax-typeahead)
-   - `git clone git://github.com/biggora/bootstrap-ajax-typeahead.git`
+* [Download the latest release](https://github.com/biggora/bootstrap-ajax-typeahead/zipball/master)
+* [Clone in Windows](github-windows://openRepo/https://github.com/biggora/bootstrap-ajax-typeahead)
+* Clone the repo: `git clone git://github.com/biggora/bootstrap-ajax-typeahead.git`
 
 #### Include files in your HTML. The minimum required for this plugin are:
 
@@ -489,15 +500,16 @@ Contact
 
 pwarelis at gmail dot com
 
-License
+Copyright and license
 -------
+
 Copyright 2012 Twitter, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+you may not use this work except in compliance with the License.
+You may obtain a copy of the License in the LICENSE file, or at:
 
-http://www.apache.org/licenses/LICENSE-2.0
+  [http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0)
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
