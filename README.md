@@ -163,7 +163,8 @@ Options
             null
         </td>
         <td>
-            Optionally, a simple URL may be used instead of the AJAX object. <br />   <i>See also: ajax as an object (above)</i>
+            Optionally, a simple URL may be used instead of the AJAX object. <br />   
+            <a href="#ajax"><i>See also: ajax as an object</i></a>
         </td>
     </tr>
     <tr>
@@ -298,7 +299,8 @@ Ajax Options
             300
         </td>
         <td>
-            
+            Specify the amount of time to wait for keyboard input to stop until you send the query to the server.
+            Default is at 300ms.
         </td>
     </tr>
     <tr>
@@ -312,7 +314,7 @@ Ajax Options
             'get'
         </td>
         <td>
-            
+            The method to use, either "post" or "get".
         </td>
     </tr>
     <tr>
@@ -326,7 +328,7 @@ Ajax Options
             1
         </td>
         <td>
-	    
+	    This is the minimum length of text to take action on. Default is at 1.
         </td>
     </tr>
     <tr>
@@ -388,7 +390,8 @@ Ajax Options
             'name'
         </td>
         <td>
-            The object property that is returned when an item is selected.
+        If the data returned from the server is a list of objects (as opposed to an array of strings), 
+        set this member to the name for the field to use for display.
         </td>
     </tr>
     <tr>
@@ -402,7 +405,8 @@ Ajax Options
             'id'
         </td>
         <td>
-            The object property that is returned when an item is selected.
+          If the data returned from the server is a list of objects (as opposed to an array of strings), 
+          set this member to the id data for the item into list (*required* for a list of objects).
         </td>
     </tr>
 </table>
