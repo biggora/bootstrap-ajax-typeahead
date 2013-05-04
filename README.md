@@ -33,6 +33,233 @@ Installation
 
     $(myElement).typeahead(options);
 
+Events
+-----------------
+
+<table width="100%">
+	<thead>
+		<tr>
+			<th>
+				Event
+			</th>
+			<th>
+				Description
+			</th>
+		</tr>
+	</thead>
+    <tr>
+        <td>
+            grepper
+        </td>
+        <td>
+            Filters relevant results from the source.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            highlighter
+        </td>
+        <td>
+            Highlights any matching results in the list.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            itemSelected
+        </td>
+        <td>
+            The callback function that is invoked when an item is chosen.
+            <ul>
+			<li>item: the HTML element that was selected</li>
+			<li>val: value of the *val* property</li>
+            <li>text: value of the *display* property</li>
+			</ul>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            lookup
+        </td>
+        <td>
+            Determines if source is remote or local and initializes the search.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            matcher
+        </td>
+        <td>
+            Looks for a match between the query and a source item.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            render
+        </td>
+        <td>
+            Renders the list of results.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            select
+        </td>
+        <td>
+            Selects an item from the results list.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            sorter
+        </td>
+        <td>
+            Sorts the results.
+        </td>
+    </tr>
+</table>
+
+Options
+-----------------
+
+<table width="100%">
+<thead>
+	<tr>
+		<th>
+			Name
+		</th>
+		<th>
+			Type
+		</th>
+		<th>
+			Default
+		</th>
+		<th>
+			Description
+		</th>
+	</tr>
+</thead>
+    <tr>
+        <td>
+            ajax
+        </td>
+        <td>
+            object
+        </td>
+        <td>
+        <pre>{
+    url: null,
+    timeout: 300,
+    method: 'post',
+    triggerLength: 3,
+    loadingClass: null,
+    displayField: null,
+    preDispatch: null,
+    preProcess: null
+}</pre>
+        </td>
+        <td>
+            The object required to use a remote datasource.  <br /><i>See also: ajax as a string (below)</i>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            ajax
+        </td>
+        <td>
+            string
+        </td>
+        <td>
+            null
+        </td>
+        <td>
+            Optionally, a simple URL may be used instead of the AJAX object. <br />   <i>See also: ajax as an object (above)</i>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            display
+        </td>
+		<td>
+            string
+        </td>
+		<td>
+            'name'
+        </td>
+        <td>
+            The object property to match the query against and highlight in the results.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            item
+        </td>
+		<td>
+            string
+        </td>
+        <td>
+            '&lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;/a&gt;&lt;/li&gt;'
+        </td>
+        <td>
+			The HTML rendering for a result item.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            items
+        </td>
+		<td>
+            integer
+        </td>
+        <td>
+            8
+        </td>
+        <td>
+			The maximum number of items to show in the results.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            menu
+        </td>
+		<td>
+            string
+        </td>
+        <td>
+            '&lt;ul class=&quot;typeahead dropdown-menu&quot;&gt;&lt;/ul&gt;'
+        </td>
+        <td>
+			The HTML rendering for the results list.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            source
+        </td>
+		<td>
+            object
+        </td>
+        <td>
+           []
+        </td>
+        <td>
+			The source to search against.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            val
+        </td>
+		<td>
+            string
+        </td>
+		<td>
+            'id'
+        </td>
+        <td>
+            The object property that is returned when an item is selected.
+        </td>
+    </tr>
+</table>
 
 ### Simple use
 
