@@ -198,10 +198,8 @@
 
         ajaxSource: function (data) {
             this.ajaxToggleLoadClass(false);
-
             var that = this, items;
             if (!that.ajax.xhr) return;
-
             if (that.ajax.preProcess) {
                 data = that.ajax.preProcess(data);
             }

@@ -28,7 +28,7 @@ THE SOFTWARE.
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="http://twitter.github.io/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
         <link href="http://twitter.github.io/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
-        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
         <script src="https://raw.github.com/appendto/jquery-mockjax/master/jquery.mockjax.js"></script>
         <script src="../js/bootstrap-typeahead.js"></script>
     </head>
@@ -189,16 +189,18 @@ THE SOFTWARE.
                 // Mock an AJAX request
                 $.mockjax({
                     url: '/cities/list',
-                    responseText: [{ id: 1, name: 'Toronto' },
-                        { id: 2, name: 'Montreal' },
-                        { id: 3, name: 'New York' },
-                        { id: 4, name: 'Buffalo' },
-                        { id: 5, name: 'Boston' },
-                        { id: 6, name: 'Columbus' },
-                        { id: 7, name: 'Dallas' },
-                        { id: 8, name: 'Vancouver' },
-                        { id: 9, name: 'Seattle' },
-                        { id: 10, name: 'Los Angeles' }]
+                    response: function() {
+                        this.responseText = [{ id: 1, name: 'Toronto' },
+                            { id: 2, name: 'Montreal' },
+                            { id: 3, name: 'New York' },
+                            { id: 4, name: 'Buffalo' },
+                            { id: 5, name: 'Boston' },
+                            { id: 6, name: 'Columbus' },
+                            { id: 7, name: 'Dallas' },
+                            { id: 8, name: 'Vancouver' },
+                            { id: 9, name: 'Seattle' },
+                            { id: 10, name: 'Los Angeles' }]
+                    }
                 });
 
                 $('#demo4').typeahead({
@@ -207,7 +209,11 @@ THE SOFTWARE.
                 });
 
                 $('#demo5').typeahead({
-                    ajax: { url: '/cities/list', triggerLength: 1 },
+                    ajax: {
+                        url: '/cities/list',
+                        method: 'post',
+                        triggerLength: 1
+                    },
                     onSelect: displayResult
                 });
             });
