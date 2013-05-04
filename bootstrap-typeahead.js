@@ -19,7 +19,7 @@
 
 /*
  *
- * Modifications by Paul Warelis, Anderson Grüdtner Martins
+ * Modifications by Paul Warelis, Alexey Gordeyev
  *
  */
 
