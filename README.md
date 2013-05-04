@@ -30,8 +30,9 @@ Installation
     <script src="/path/to/bootstrap-typeahead.js" type="text/javascript"></script>
 
 #### Execute the plugin:
-
-    $(myElement).typeahead(options);
+```javascript
+    $('input.typeahead').typeahead(options);
+```
 
 Events
 -----------------
@@ -466,7 +467,22 @@ $("input.typeahead").typeahead({
 });
 ```
 
-Enjoy!
+Bootstrap Integration
+---------------------
+
+For simple autocomplete use cases, the typeahead component [Bootstrap][bootstrap] provides should suffice. However, if you'd prefer to take advantage of some of the advance features typeahead.js provides, here's what you'll need to do to integrate typeahead.js with Bootstrap:
+
+* If you're customizing Bootstrap, exclude the typeahead component. If you're depending on the standard *bootstrap.js*, ensure *typeahead.js* is loaded after it.
+* The DOM structure of the dropdown menu used by typeahead.js differs from the DOM structure of the Bootstrap dropdown menu. You'll need to load some [additional CSS][typeahead.js-bootstrap.css] in order to get the typeahead.js dropdown menu to fit the default Bootstrap theme.
+
+Browser Support
+---------------
+
+* Chrome
+* Firefox 3.5+
+* Safari 4+
+* Internet Explorer 7+
+* Opera 11+
 
 Contact
 -------
