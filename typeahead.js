@@ -277,16 +277,13 @@
 			var query = this.query.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, '\\$&');
 			var text;
 
-			if (this.options.ajax.displayField)
-			{
+			if (this.options.ajax.displayField) {
 				text = item[this.options.ajax.displayField];
-			}
-			else
-			{
+			} else {
 				text = item;
 			}
 
-			return item.replace(new RegExp('(' + query + ')', 'ig'), function ($1, match) {
+			return text.replace(new RegExp('(' + query + ')', 'ig'), function ($1, match) {
 				return '<strong>' + match + '</strong>';
 			})
 		},
