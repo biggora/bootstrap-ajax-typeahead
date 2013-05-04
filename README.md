@@ -24,11 +24,10 @@ Installation
 #### Download [jQuery](http://docs.jquery.com/Downloading_jQuery)
 * [Download the latest release](http://docs.jquery.com/Downloading_jQuery)
 * Using jQuery's CDN:
-
-
+<pre>
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/jquery-migrate-1.1.1.min.js"></script>
-
+</pre>
 
 #### Download this plugin.
 
