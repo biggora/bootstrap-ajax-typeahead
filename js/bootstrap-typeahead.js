@@ -95,37 +95,20 @@
             return isSupported;
         },
         select: function () {
-            var item, text;
             var $selectedItem = this.$menu.find('.active');
-            var index = $selectedItem.attr('data-index');
             var value = $selectedItem.attr('data-value');
+            var text = this.$menu.find('.active a').text();
 
-            if (this.options.ajax.valueField) {
-
-                text  = $selectedItem.attr('data-text');
-                item = this.ajax.data[index];
-
-                if (this.options.onSelect) {
-                    this.options.onSelect(item);
-                }
-                this.$element
-                .val(this.updater(text, item))
-                .change();
-                return this.hide();
-            } else {
-                text = this.$menu.find('.active a').text();
-
-                if (this.options.onSelect) {
-                    this.options.onSelect({
-                        value: value,
-                        text: text
-                    });
-                }
-                this.$element
-                .val(this.updater(text))
-                .change();
-                return this.hide();
+            if (this.options.onSelect) {
+                this.options.onSelect({
+                    value: value,
+                    text: text
+                });
             }
+            this.$element
+            .val(this.updater(text))
+            .change();
+            return this.hide();
         },
         updater: function (item) {
             return item
