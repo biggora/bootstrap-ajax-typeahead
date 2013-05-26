@@ -493,10 +493,14 @@ Browser Support
 * Internet Explorer 7+
 * Opera 11+
 
-Contact
--------
+### Recommend extensions
 
-pwarelis at gmail dot com
+- [Bootstrap Fancy File Plugin](http://biggora.github.io/bootstrap-fancyfile/)
+- [TrinteJS - Javascrpt MVC Framework for Node.JS](http://www.trintejs.com/)
+- [CaminteJS - Cross-db ORM for NodeJS](http://www.camintejs.com/)
+- [MongoDB Session Storage for ExpressJS](https://github.com/biggora/express-mongodb)
+- [Middleware exposing user-agent for NodeJS](https://github.com/biggora/express-useragent)
+- [2CO NodeJS adapter for 2checkout API payment gateway](https://github.com/biggora/2co)
 
 Copyright and license
 -------
@@ -514,3 +518,9 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+
+## Resources
+
+- Visit the [author website](http://www.gordejev.lv).
+- Follow [@biggora](https://twitter.com/#!/biggora) on Twitter for updates.
+- Report issues on the [github issues](https://github.com/biggora/bootstrap-fancyfile/issues) page.
