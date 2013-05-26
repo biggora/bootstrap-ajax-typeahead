@@ -523,4 +523,4 @@ limitations under the License.
 
 - Visit the [author website](http://www.gordejev.lv).
 - Follow [@biggora](https://twitter.com/#!/biggora) on Twitter for updates.
-- Report issues on the [github issues](https://github.com/biggora/bootstrap-fancyfile/issues) page.
+- Report issues on the [github issues](https://github.com/biggora/bootstrap-ajax-typeahead/issues) page.
