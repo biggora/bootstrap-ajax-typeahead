@@ -114,7 +114,7 @@
             return item
         },
         show: function () {
-            var pos = $.extend({}, this.$element.offset(), {
+            var pos = $.extend({}, this.$element.position(), {
                 height: this.$element[0].offsetHeight
             })
 
