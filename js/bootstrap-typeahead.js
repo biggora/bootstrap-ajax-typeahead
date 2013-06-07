@@ -254,11 +254,12 @@
             });
         },
         render: function (items) {
-            var that = this;
+            var that = this, display;
 
             items = $(items).map(function (i, item) {
+                display = that.options.display === 'string' ? item[that.options.display] : that.options.display(item);
                 i = $(that.options.item).attr('data-value', item[that.options.val]);
-                i.find('a').html(that.highlighter(item[that.options.display], item));
+                i.find('a').html(that.highlighter(display));
                 return i[0];
             });
 
@@ -270,14 +271,15 @@
         //  Filters relevent results
         //
         grepper: function(data) {
-            var that = this, items;
+            var that = this, items, display;
 
-            if (data && data.length && !data[0].hasOwnProperty(that.options.display)) {
+            if (typeof that.options.display === 'string' && data && data.length && !data[0].hasOwnProperty(that.options.display)) {
                 return null;
             }
 
             items = $.grep(data, function (item) {
-                return that.matcher(item[that.options.display], item);
+                display = that.options.display === 'string' ? item[that.options.display] : that.options.display(item);
+                return that.matcher(display);
             });
 
             return this.sorter(items);
