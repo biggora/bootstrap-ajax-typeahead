@@ -254,10 +254,10 @@
             });
         },
         render: function (items) {
-            var that = this, display;
+            var that = this, display, isString = typeof that.options.display === 'string';
 
             items = $(items).map(function (i, item) {
-                display = that.options.display === 'string' ? item[that.options.display] : that.options.display(item);
+                display = isString ? item[that.options.display] : that.options.display(item);
                 i = $(that.options.item).attr('data-value', item[that.options.val]);
                 i.find('a').html(that.highlighter(display));
                 return i[0];
@@ -271,14 +271,14 @@
         //  Filters relevent results
         //
         grepper: function(data) {
-            var that = this, items, display;
+            var that = this, items, display, isString = typeof that.options.display === 'string';
 
-            if (typeof that.options.display === 'string' && data && data.length && !data[0].hasOwnProperty(that.options.display)) {
+            if (isString && data && data.length && !data[0].hasOwnProperty(that.options.display)) {
                 return null;
             }
 
             items = $.grep(data, function (item) {
-                display = that.options.display === 'string' ? item[that.options.display] : that.options.display(item);
+                display = isString ? item[that.options.display] : that.options.display(item);
                 return that.matcher(display);
             });
 
