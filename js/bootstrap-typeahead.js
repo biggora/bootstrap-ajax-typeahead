@@ -168,8 +168,13 @@
                 var params = this.ajax.preDispatch ? this.ajax.preDispatch(query) : {
                     query : query
                 };
-                var jAjax = (this.ajax.method === "post") ? $.post : $.get;
-                this.ajax.xhr = jAjax(this.ajax.url, params, $.proxy(this.ajaxSource, this));
+                this.ajax.xhr = $.ajax({
+		    url: this.ajax.url,
+		    data: params,
+		    success: $.proxy(this.ajaxSource, this),
+		    type: this.ajax.method || 'get',
+		    dataType: 'json'
+		});
                 this.ajax.timerId = null;
             }
 
