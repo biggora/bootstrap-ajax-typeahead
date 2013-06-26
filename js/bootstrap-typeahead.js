@@ -134,7 +134,7 @@
         },
         ajaxLookup: function () {
 
-            var query = this.$element.val();
+            var query = $.trim(this.$element.val());
 
             if (query == this.query) {
                 return this;
