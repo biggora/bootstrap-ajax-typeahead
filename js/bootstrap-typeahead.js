@@ -1,5 +1,5 @@
 /* =============================================================
- * bootstrap-typeahead.js v2.0.3
+ * bootstrap-typeahead.js v2.3.2
  * http://twitter.github.com/bootstrap/javascript.html#typeahead
  * =============================================================
  * Copyright 2012 Twitter, Inc.
@@ -26,7 +26,7 @@
     "use strict"; // jshint ;_;
 
     /* TYPEAHEAD PUBLIC CLASS DEFINITION
-	 * ================================= */
+     * ================================= */
 
     var Typeahead = function (element, options) {
         var that = this;
@@ -169,12 +169,12 @@
                     query : query
                 };
                 this.ajax.xhr = $.ajax({
-		    url: this.ajax.url,
-		    data: params,
-		    success: $.proxy(this.ajaxSource, this),
-		    type: this.ajax.method || 'get',
-		    dataType: 'json'
-		});
+                    url: this.ajax.url,
+                    data: params,
+                    success: $.proxy(this.ajaxSource, this),
+                    type: this.ajax.method || 'get',
+                    dataType: 'json'
+                });
                 this.ajax.timerId = null;
             }
 
@@ -313,48 +313,22 @@
 
         listen: function () {
             this.$element
+            .on('focus',    $.proxy(this.focus, this))
             .on('blur',     $.proxy(this.blur, this))
             .on('keypress', $.proxy(this.keypress, this))
             .on('keyup',    $.proxy(this.keyup, this))
 
-            // Firefox needs this too
-            this.$element.on('keydown', $.proxy(this.keypress, this))
-
-            this.$menu
-            .css({
-                width : this.$element.width() * 1.05
-            })
-            .on('click', $.proxy(this.click, this))
-            .on('mouseenter', 'li', $.proxy(this.mouseenter, this))
-        },
-
-        keyup: function (e) {
-            switch(e.keyCode) {
-                case 40: // down arrow
-                case 38: // up arrow
-                    break
-
-                case 9: // tab
-                case 13: // enter
-                    if (!this.shown) return
-                    this.select()
-                    break
-
-                case 27: // escape
-                    if (!this.shown) return
-                    this.hide()
-                    break
-
-                default:
-                    if (this.ajax) this.ajaxLookup()
-                    else this.lookup()
+            if (this.eventSupported('keydown')) {
+                this.$element.on('keydown', $.proxy(this.keydown, this))
             }
 
-            e.stopPropagation()
-            e.preventDefault()
+            this.$menu
+            .on('click', $.proxy(this.click, this))
+            .on('mouseenter', 'li', $.proxy(this.mouseenter, this))
+            .on('mouseleave', 'li', $.proxy(this.mouseleave, this))
         },
 
-        keypress: function (e) {
+        move: function (e) {
             if (!this.shown) return
 
             switch(e.keyCode) {
@@ -365,13 +339,11 @@
                     break
 
                 case 38: // up arrow
-                    if (e.type != 'keydown') break
                     e.preventDefault()
                     this.prev()
                     break
 
                 case 40: // down arrow
-                    if (e.type != 'keydown') break
                     e.preventDefault()
                     this.next()
                     break
@@ -380,28 +352,76 @@
             e.stopPropagation()
         },
 
+        keydown: function (e) {
+            this.suppressKeyPressRepeat = ~$.inArray(e.keyCode, [40,38,9,13,27])
+            this.move(e)
+        },
+
+        keypress: function (e) {
+            if (this.suppressKeyPressRepeat) return
+            this.move(e)
+        },
+
+        keyup: function (e) {
+            switch(e.keyCode) {
+                case 40: // down arrow
+                case 38: // up arrow
+                case 16: // shift
+                case 17: // ctrl
+                case 18: // alt
+                  break
+
+                case 9: // tab
+                case 13: // enter
+                  if (!this.shown) return
+                  this.select()
+                  break
+
+                case 27: // escape
+                  if (!this.shown) return
+                  this.hide()
+                  break
+
+                default:
+                    if (this.ajax) this.ajaxLookup()
+                    else this.lookup()
+            }
+
+            e.stopPropagation()
+            e.preventDefault()
+        },
+
+        focus: function (e) {
+            this.focused = true
+        },
+
         blur: function (e) {
-            var that = this
-            setTimeout(function () {
-                that.hide()
-            }, 150)
+            this.focused = false
+            if (!this.mousedover && this.shown) this.hide()
         },
 
         click: function (e) {
             e.stopPropagation()
             e.preventDefault()
             this.select()
+            this.$element.focus()
         },
 
         mouseenter: function (e) {
+            this.mousedover = true
             this.$menu.find('.active').removeClass('active')
             $(e.currentTarget).addClass('active')
+        },
+
+        mouseleave: function (e) {
+            this.mousedover = false
+            if (!this.focused && this.shown) this.hide()
         }
     }
 
 
     /* TYPEAHEAD PLUGIN DEFINITION
-	 * =========================== */
+     * =========================== */
 
     $.fn.typeahead = function (option) {
         return this.each(function () {
@@ -435,7 +455,7 @@
     $.fn.typeahead.Constructor = Typeahead
 
     /* TYPEAHEAD DATA-API
-	 * ================== */
+     * ================== */
 
     $(function () {
         $('body').on('focus.typeahead.data-api', '[data-provide="typeahead"]', function (e) {
