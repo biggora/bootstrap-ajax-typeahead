@@ -1,17 +1,25 @@
 Twitter Bootstrap Ajax Typeahead Plugin
 ============
 
-Modifications to the Bootstrap Typeahead plugin to give it ajax capabilities
+Modifications to the Bootstrap Typeahead plugin to give it ajax capabilities. 
+[See Demo](http://plugins.upbootstrap.com/bootstrap-ajax-typeahead)
 
 How to Use
 ----------
 
 To make a regular typeahead plugin query a server for the source, just specify an ajax member when initializing.
 
+Feature
+-----------------
+- A callback function is available for when an item is selected
+- Ability to specify data source properties
+- Ability to use a local or remote (AJAX) data source
+- Most original methods are overridable so you can customize without changing the source code
+
 Required
 -----------------
 * Twitter Bootstrap 2.0+
-* jQuery 1.7+
+* jQuery 1.8+
 
 Installation
 -----------------
