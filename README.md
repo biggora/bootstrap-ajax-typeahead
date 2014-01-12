@@ -56,10 +56,10 @@ Events
 <table width="100%">
 	<thead>
 		<tr>
-			<th>
+			<th width="30%">
 				Event
 			</th>
-			<th>
+			<th width="70%">
 				Description
 			</th>
 		</tr>
@@ -142,16 +142,16 @@ Options
 <table width="100%">
 <thead>
 	<tr>
-		<th>
+		<th width="20%">
 			Name
 		</th>
-		<th>
+		<th width="20%">
 			Type
 		</th>
-		<th>
+		<th width="20%">
 			Default
 		</th>
-		<th>
+		<th width="40%">
 			Description
 		</th>
 	</tr>
