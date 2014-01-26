@@ -436,15 +436,40 @@ Ajax Options
 Basic Usage
 -----------------
 The plugin in its simplest (realistic) form.
-```javascript
+
+#### Example 1
+
+```js
+var typeaheadSource = ['John', 'Alex', 'Terry'];
+
+$('input.typeahead').typeahead({
+	source: typeaheadSource
+});
+```
+
+#### Example 2
+
+```js
 var typeaheadSource = [{ id: 1, name: 'John'}, { id: 2, name: 'Alex'}, { id: 3, name: 'Terry'}];
 
 $('input.typeahead').typeahead({
 	source: typeaheadSource
 });
 ```
+#### Example 3
+
+```js
+var typeaheadSource = [{ id: 1, firstName: 'John'}, { id: 2, firstName: 'Alex'}, { id: 3, firstName: 'Terry'}];
+
+$('input.typeahead').typeahead({
+	source: typeaheadSource,
+        displayField: 'firstName'
+});
+```
+#### Example 4
 For a quick setup, specify a source url to pull data from:
-```javascript
+
+```js
 $('input.typeahead').typeahead({
         ajax: '/path/to/typeahead/source'
 });
