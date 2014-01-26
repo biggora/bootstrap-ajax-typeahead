@@ -188,7 +188,7 @@ Options
     </tr>
     <tr>
         <td>
-            display
+            displayField
         </td>
 		<td>
             string
@@ -225,7 +225,7 @@ Options
             8
         </td>
         <td>
-			The maximum number of items to show in the results.
+	    The maximum number of items to show in the results.
         </td>
     </tr>
     <tr>
@@ -258,7 +258,7 @@ Options
     </tr>
     <tr>
         <td>
-            val
+            valueField
         </td>
 		<td>
             string

@@ -1,7 +1,7 @@
 {
-    "name": "bootstrap-ajax-typeahead",
+    "name": "bootstrap-typeahead",
     "description": "Twitter Bootstrap Ajax Typeahead Plugin",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "private": true,
     "keywords": [ "bootstrap", "typeahead", "autocomplete", "ajax" ],
     "homepage": "https://github.com/biggora/bootstrap-ajax-typeahead",

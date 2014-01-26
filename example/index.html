@@ -37,7 +37,7 @@ THE SOFTWARE.
         <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
         <script src="./assets/js/bootstrap.min.js"></script>
         <script src="./assets/js/jquery.mockjax.js"></script>
-        <script src="../js/bootstrap-typeahead.min.js"></script>
+        <script src="../js/bootstrap-typeahead.js"></script>
     </head>
     <body class="container">
         <div class="row">
@@ -56,6 +56,7 @@ THE SOFTWARE.
                 <li><a href="#tab-demo3" data-toggle="tab">Demo #3</a></li>
                 <li><a href="#tab-demo4" data-toggle="tab">Demo #4</a></li>
                 <li><a href="#tab-demo5" data-toggle="tab">Demo #5</a></li>
+                <li><a href="#tab-demo6" data-toggle="tab">Demo #6</a></li>
             </ul>
             <!-- Tab panes -->
             <div class="tab-content">
@@ -132,7 +133,7 @@ THE SOFTWARE.
             { id: 9, full_name: 'Seattle', first_two_letters: 'Se' },
             { id: 10, full_name: 'Los Angeles', first_two_letters: 'Lo' }
         ],
-        display: 'full_name'
+        displayField: 'full_name'
     });
                         </pre>
                     </div>
@@ -168,17 +169,37 @@ THE SOFTWARE.
                         </pre>
                     </div>
                 </div>
+                <div class="tab-pane" id="tab-demo6">
+                    <h3>Demo #6</h3>
+                    <div class="well col-md-5">
+                        <input id="demo6" type="text" class="col-md-12 form-control" placeholder="Search cities..." autocomplete="off" />
+                    </div>
+                    <div class="col-md-7">
+                        <pre class="prettyprint">
+
+    $('#demo6').typeahead({
+        source: ['Toronto',
+                 'Montreal',
+                 'New York', 
+                 'Buffalo', 
+                 'Boston', 
+                 'Columbus', 
+                 'Dallas', 
+                 'Vancouver', 
+                 'Seattle', 
+                 'Los Angeles']
+    });
+                        </pre>
+                    </div>
+                </div>
             </div>
         </div>
 
         <script>
-            
-            function displayResult(item) {
-                $('.alert').show().html('You selected <strong>' + item.value + '</strong>: <strong>' + item.text + '</strong>');
-            }
-
             $(function() {
-
+                function displayResult(item) {
+                    $('.alert').show().html('You selected <strong>' + item.value + '</strong>: <strong>' + item.text + '</strong>');
+                }
                 $('#demo1').typeahead({
                     source: [
                         {id: 1, name: 'Toronto'},
@@ -191,7 +212,8 @@ THE SOFTWARE.
                         {id: 8, name: 'Vancouver'},
                         {id: 9, name: 'Seattle'},
                         {id: 10, name: 'Los Angeles'}
-                    ]
+                    ],
+                    onSelect: displayResult
                 });
 
                 $('#demo2').typeahead({
@@ -207,8 +229,8 @@ THE SOFTWARE.
                         {ID: 9, Name: 'Seattle'},
                         {ID: 10, Name: 'Los Angeles'}
                     ],
-                    display: 'Name',
-                    val: 'ID',
+                    displayField: 'Name',
+                    valueField: 'ID',
                     onSelect: displayResult
                 });
 
@@ -225,7 +247,7 @@ THE SOFTWARE.
                         {id: 9, full_name: 'Seattle', first_two_letters: 'Se'},
                         {id: 10, full_name: 'Los Angeles', first_two_letters: 'Lo'}
                     ],
-                    display: 'full_name',
+                    displayField: 'full_name',
                     onSelect: displayResult
                 });
 
@@ -233,7 +255,8 @@ THE SOFTWARE.
                 $.mockjax({
                     url: '/cities/list',
                     response: function() {
-                        this.responseText = [{id: 1, name: 'Toronto'},
+                        this.responseText = [
+                            {id: 1, name: 'Toronto'},
                             {id: 2, name: 'Montreal'},
                             {id: 3, name: 'New York'},
                             {id: 4, name: 'Buffalo'},
@@ -242,7 +265,8 @@ THE SOFTWARE.
                             {id: 7, name: 'Dallas'},
                             {id: 8, name: 'Vancouver'},
                             {id: 9, name: 'Seattle'},
-                            {id: 10, name: 'Los Angeles'}]
+                            {id: 10, name: 'Los Angeles'}
+                        ];
                     }
                 });
 
@@ -257,6 +281,20 @@ THE SOFTWARE.
                         method: 'post',
                         triggerLength: 1
                     },
+                    onSelect: displayResult
+                });
+                $('#demo6').typeahead({
+                    source: [
+                        'Toronto',
+                        'Montreal',
+                        'New York',
+                        'Buffalo',
+                        'Boston',
+                        'Columbus',
+                        'Dallas',
+                        'Vancouver',
+                        'Seattle',
+                        'Los Angeles'],
                     onSelect: displayResult
                 });
             });

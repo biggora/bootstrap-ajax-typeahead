@@ -1,34 +1,20 @@
-/* =============================================================
- * bootstrap-typeahead.js v2.3.2
- * http://twitter.github.com/bootstrap/javascript.html#typeahead
- * =============================================================
- * Copyright 2012 Twitter, Inc.
+/*!
+ * bootstrap-typeahead.js v0.0.3 (http://www.upbootstrap.com)
+ * Copyright 2012-2014 Alexey Gordeyev.
+ * Licensed under http://www.apache.org/licenses/LICENSE-2.0
+ * See Demo: http://plugins.upbootstrap.com/bootstrap-ajax-typeahead
+ * Updated: 2014-01-26 12:16:59
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * ============================================================ */
-
-/*
- * Modifications by Paul Warelis, Alexey Gordeyev
+ * Modifications by Paul Warelis
  */
-
-!function($){
+!function($) {
 
     "use strict"; // jshint ;_;
 
     /* TYPEAHEAD PUBLIC CLASS DEFINITION
      * ================================= */
 
-    var Typeahead = function (element, options) {
+    var Typeahead = function(element, options) {
         var that = this;
         that.$element = $(element);
         that.options = $.extend({}, $.fn.typeahead.defaults, options);
@@ -44,7 +30,8 @@
         that.onSelect = that.options.onSelect || null;
         that.sorter = that.options.sorter || that.sorter;
         that.source = that.options.source || that.source;
-        that.display = that.options.display || that.display;
+        that.displayField = that.options.displayField || that.displayField;
+        that.valueField = that.options.valueField || that.valueField;
 
         if (that.options.ajax) {
             var ajax = that.options.ajax;
@@ -54,11 +41,11 @@
                     url: ajax
                 });
             } else {
-                if(typeof ajax.displayField === 'string') {
-                    that.display = that.options.display = ajax.displayField;
+                if (typeof ajax.displayField === 'string') {
+                    that.displayField = that.options.displayField = ajax.displayField;
                 }
-                if(typeof ajax.valueField === 'string') {
-                    that.val = that.options.val = ajax.valueField;
+                if (typeof ajax.valueField === 'string') {
+                    that.valueField = that.options.valueField = ajax.valueField;
                 }
 
                 that.ajax = $.extend({}, $.fn.typeahead.defaults.ajax, ajax);
@@ -77,7 +64,6 @@
     };
 
     Typeahead.prototype = {
-
         constructor: Typeahead,
         //=============================================================================================================
         //  Utils
@@ -94,7 +80,7 @@
 
             return isSupported;
         },
-        select: function () {
+        select: function() {
             var $selectedItem = this.$menu.find('.active');
             var value = $selectedItem.attr('data-value');
             var text = this.$menu.find('.active a').text();
@@ -106,14 +92,14 @@
                 });
             }
             this.$element
-            .val(this.updater(text))
-            .change();
+                    .val(this.updater(text))
+                    .change();
             return this.hide();
         },
-        updater: function (item) {
+        updater: function(item) {
             return item;
         },
-        show: function () {
+        show: function() {
             var pos = $.extend({}, this.$element.position(), {
                 height: this.$element[0].offsetHeight
             });
@@ -127,12 +113,12 @@
             this.shown = true;
             return this;
         },
-        hide: function () {
+        hide: function() {
             this.$menu.hide();
             this.shown = false;
             return this;
         },
-        ajaxLookup: function () {
+        ajaxLookup: function() {
 
             var query = $.trim(this.$element.val());
 
@@ -163,10 +149,11 @@
                 this.ajaxToggleLoadClass(true);
 
                 // Cancel last call if already in progress
-                if (this.ajax.xhr) this.ajax.xhr.abort();
+                if (this.ajax.xhr)
+                    this.ajax.xhr.abort();
 
                 var params = this.ajax.preDispatch ? this.ajax.preDispatch(query) : {
-                    query : query
+                    query: query
                 };
                 this.ajax.xhr = $.ajax({
                     url: this.ajax.url,
@@ -183,11 +170,11 @@
 
             return this;
         },
-
-        ajaxSource: function (data) {
+        ajaxSource: function(data) {
             this.ajaxToggleLoadClass(false);
             var that = this, items;
-            if (!that.ajax.xhr) return;
+            if (!that.ajax.xhr)
+                return;
             if (that.ajax.preProcess) {
                 data = that.ajax.preProcess(data);
             }
@@ -203,13 +190,12 @@
             that.ajax.xhr = null;
             return that.render(items.slice(0, that.options.items)).show();
         },
-
-        ajaxToggleLoadClass: function (enable) {
-            if (!this.ajax.loadingClass) return;
+        ajaxToggleLoadClass: function(enable) {
+            if (!this.ajax.loadingClass)
+                return;
             this.$element.toggleClass(this.ajax.loadingClass, enable);
         },
-
-        lookup: function (event) {
+        lookup: function(event) {
             var that = this, items;
 
             if (that.ajax) {
@@ -231,20 +217,23 @@
                 return that.render(items.slice(0, that.options.items)).show();
             }
         },
-        matcher: function (item) {
+        matcher: function(item) {
             return ~item.toLowerCase().indexOf(this.query.toLowerCase());
         },
-        sorter: function (items) {
+        sorter: function(items) {
             if (!this.options.ajax) {
                 var beginswith = [],
-                caseSensitive = [],
-                caseInsensitive = [],
-                item;
+                        caseSensitive = [],
+                        caseInsensitive = [],
+                        item;
 
                 while (item = items.shift()) {
-                    if (!item.toLowerCase().indexOf(this.query.toLowerCase())) beginswith.push(item);
-                    else if (~item.indexOf(this.query)) caseSensitive.push(item);
-                    else caseInsensitive.push(item);
+                    if (!item.toLowerCase().indexOf(this.query.toLowerCase()))
+                        beginswith.push(item);
+                    else if (~item.indexOf(this.query))
+                        caseSensitive.push(item);
+                    else
+                        caseInsensitive.push(item);
                 }
 
                 return beginswith.concat(caseSensitive, caseInsensitive);
@@ -252,18 +241,23 @@
                 return items;
             }
         },
-        highlighter: function (item) {
+        highlighter: function(item) {
             var query = this.query.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, '\\$&');
-            return item.replace(new RegExp('(' + query + ')', 'ig'), function ($1, match) {
+            return item.replace(new RegExp('(' + query + ')', 'ig'), function($1, match) {
                 return '<strong>' + match + '</strong>';
             });
         },
-        render: function (items) {
-            var that = this, display, isString = typeof that.options.display === 'string';
+        render: function(items) {
+            var that = this, display, isString = typeof that.options.displayField === 'string';
 
-            items = $(items).map(function (i, item) {
-                display = isString ? item[that.options.display] : that.options.display(item);
-                i = $(that.options.item).attr('data-value', item[that.options.val]);
+            items = $(items).map(function(i, item) {
+                if (typeof item === 'object') {
+                    display = isString ? item[that.options.displayField] : that.options.displayField(item);
+                    i = $(that.options.item).attr('data-value', item[that.options.valueField]);
+                } else {
+                    display = item;
+                    i = $(that.options.item).attr('data-value', item);
+                }             
                 i.find('a').html(that.highlighter(display));
                 return i[0];
             });
@@ -276,22 +270,29 @@
         //  Filters relevent results
         //
         grepper: function(data) {
-            var that = this, items, display, isString = typeof that.options.display === 'string';
+            var that = this, items, display, isString = typeof that.options.displayField === 'string';
 
-            if (isString && data && data.length && !data[0].hasOwnProperty(that.options.display)) {
+            if (isString && data && data.length) {
+                if (data[0].hasOwnProperty(that.options.displayField)) {
+                    items = $.grep(data, function(item) {
+                        display = isString ? item[that.options.displayField] : that.options.displayField(item);
+                        return that.matcher(display);
+                    });
+                } else if (typeof data[0] === 'string') {
+                    items = $.grep(data, function(item) {
+                        return that.matcher(item);
+                    });
+                } else {
+                    return null;
+                }
+            } else {
                 return null;
             }
-
-            items = $.grep(data, function (item) {
-                display = isString ? item[that.options.display] : that.options.display(item);
-                return that.matcher(display);
-            });
-
             return this.sorter(items);
         },
-        next: function (event) {
+        next: function(event) {
             var active = this.$menu.find('.active').removeClass('active'),
-            next = active.next();
+                    next = active.next();
 
             if (!next.length) {
                 next = $(this.$menu.find('li')[0]);
@@ -299,10 +300,9 @@
 
             next.addClass('active');
         },
-
-        prev: function (event) {
+        prev: function(event) {
             var active = this.$menu.find('.active').removeClass('active'),
-            prev = active.prev();
+                    prev = active.prev();
 
             if (!prev.length) {
                 prev = this.$menu.find('li').last();
@@ -310,28 +310,27 @@
 
             prev.addClass('active');
         },
-
-        listen: function () {
+        listen: function() {
             this.$element
-            .on('focus',    $.proxy(this.focus, this))
-            .on('blur',     $.proxy(this.blur, this))
-            .on('keypress', $.proxy(this.keypress, this))
-            .on('keyup',    $.proxy(this.keyup, this));
+                    .on('focus', $.proxy(this.focus, this))
+                    .on('blur', $.proxy(this.blur, this))
+                    .on('keypress', $.proxy(this.keypress, this))
+                    .on('keyup', $.proxy(this.keyup, this));
 
             if (this.eventSupported('keydown')) {
                 this.$element.on('keydown', $.proxy(this.keydown, this))
             }
 
             this.$menu
-            .on('click', $.proxy(this.click, this))
-            .on('mouseenter', 'li', $.proxy(this.mouseenter, this))
-            .on('mouseleave', 'li', $.proxy(this.mouseleave, this))
+                    .on('click', $.proxy(this.click, this))
+                    .on('mouseenter', 'li', $.proxy(this.mouseenter, this))
+                    .on('mouseleave', 'li', $.proxy(this.mouseleave, this))
         },
+        move: function(e) {
+            if (!this.shown)
+                return
 
-        move: function (e) {
-            if (!this.shown) return
-
-            switch(e.keyCode) {
+            switch (e.keyCode) {
                 case 9: // tab
                 case 13: // enter
                 case 27: // escape
@@ -351,71 +350,70 @@
 
             e.stopPropagation();
         },
-
-        keydown: function (e) {
-            this.suppressKeyPressRepeat = ~$.inArray(e.keyCode, [40,38,9,13,27])
+        keydown: function(e) {
+            this.suppressKeyPressRepeat = ~$.inArray(e.keyCode, [40, 38, 9, 13, 27])
             this.move(e)
         },
-
-        keypress: function (e) {
-            if (this.suppressKeyPressRepeat) return
+        keypress: function(e) {
+            if (this.suppressKeyPressRepeat)
+                return
             this.move(e)
         },
-
-        keyup: function (e) {
-            switch(e.keyCode) {
+        keyup: function(e) {
+            switch (e.keyCode) {
                 case 40: // down arrow
                 case 38: // up arrow
                 case 16: // shift
                 case 17: // ctrl
                 case 18: // alt
-                  break
+                    break
 
                 case 9: // tab
                 case 13: // enter
-                  if (!this.shown) return
-                  this.select()
-                  break
+                    if (!this.shown)
+                        return
+                    this.select()
+                    break
 
                 case 27: // escape
-                  if (!this.shown) return
-                  this.hide()
-                  break
+                    if (!this.shown)
+                        return
+                    this.hide()
+                    break
 
                 default:
-                    if (this.ajax) this.ajaxLookup()
-                    else this.lookup()
+                    if (this.ajax)
+                        this.ajaxLookup()
+                    else
+                        this.lookup()
             }
 
             e.stopPropagation()
             e.preventDefault()
         },
-
-        focus: function (e) {
+        focus: function(e) {
             this.focused = true
         },
-
-        blur: function (e) {
+        blur: function(e) {
             this.focused = false
-            if (!this.mousedover && this.shown) this.hide()
+            if (!this.mousedover && this.shown)
+                this.hide()
         },
-
-        click: function (e) {
+        click: function(e) {
             e.stopPropagation()
             e.preventDefault()
             this.select()
             this.$element.focus()
         },
-
-        mouseenter: function (e) {
+        mouseenter: function(e) {
             this.mousedover = true
             this.$menu.find('.active').removeClass('active')
             $(e.currentTarget).addClass('active')
         },
-
-        mouseleave: function (e) {
+        mouseleave: function(e) {
             this.mousedover = false
-            if (!this.focused && this.shown) this.hide()
+            if (!this.focused && this.shown)
+                this.hide()
         }
     };
 
@@ -423,13 +421,15 @@
     /* TYPEAHEAD PLUGIN DEFINITION
      * =========================== */
 
-    $.fn.typeahead = function (option) {
-        return this.each(function () {
+    $.fn.typeahead = function(option) {
+        return this.each(function() {
             var $this = $(this),
-            data = $this.data('typeahead'),
-            options = typeof option === 'object' && option;
-            if (!data) $this.data('typeahead', (data = new Typeahead(this, options)));
-            if (typeof option === 'string') data[option]();
+                    data = $this.data('typeahead'),
+                    options = typeof option === 'object' && option;
+            if (!data)
+                $this.data('typeahead', (data = new Typeahead(this, options)));
+            if (typeof option === 'string')
+                data[option]();
         });
     };
 
@@ -438,9 +438,10 @@
         items: 8,
         menu: '<ul class="typeahead dropdown-menu"></ul>',
         item: '<li><a href="#"></a></li>',
-        display: 'name',
-        val: 'id',
-        onSelect: function () {},
+        displayField: 'name',
+        valueField: 'id',
+        onSelect: function() {
+        },
         ajax: {
             url: null,
             timeout: 300,
@@ -457,10 +458,11 @@
     /* TYPEAHEAD DATA-API
      * ================== */
 
-    $(function () {
-        $('body').on('focus.typeahead.data-api', '[data-provide="typeahead"]', function (e) {
+    $(function() {
+        $('body').on('focus.typeahead.data-api', '[data-provide="typeahead"]', function(e) {
             var $this = $(this);
-            if ($this.data('typeahead')) return;
+            if ($this.data('typeahead'))
+                return;
             e.preventDefault();
             $this.typeahead($this.data());
         });
