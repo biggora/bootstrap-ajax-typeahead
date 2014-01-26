@@ -459,10 +459,14 @@ $('input.typeahead').typeahead({
 #### Example 3
 
 ```js
-var typeaheadSource = [{ id: 1, firstName: 'John'}, { id: 2, firstName: 'Alex'}, { id: 3, firstName: 'Terry'}];
+var typeaheadSource = [{ 
+         id: 1, firstName: 'John'}, { 
+         id: 2, firstName: 'Alex'}, { 
+         id: 3, firstName: 'Terry'
+    }];
 
 $('input.typeahead').typeahead({
-	source: typeaheadSource,
+        source: typeaheadSource,
         displayField: 'firstName'
 });
 ```
