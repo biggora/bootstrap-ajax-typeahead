@@ -39,6 +39,7 @@ Installation
 * [Download the latest release](https://github.com/biggora/bootstrap-ajax-typeahead/zipball/master)
 * [Clone in Windows](github-windows://openRepo/https://github.com/biggora/bootstrap-ajax-typeahead)
 * Clone the repo: `git clone git://github.com/biggora/bootstrap-ajax-typeahead.git`
+* Install with Bower: `bower install bs-typeahead`.
 
 #### Include files in your HTML. The minimum required for this plugin are:
 
