@@ -28,6 +28,7 @@
     "test",
     "tests",
     "demo",
+    "src",
     "Gruntfile.js"
   ]
 }

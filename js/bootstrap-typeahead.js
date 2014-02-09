@@ -1,11 +1,11 @@
 /*!
  * bootstrap-typeahead.js v0.0.3 (http://www.upbootstrap.com)
- * Copyright 2012-2014 Alexey Gordeyev.
- * Licensed under http://www.apache.org/licenses/LICENSE-2.0
+ * Copyright 2012-2014 Twitter Inc.
+ * Licensed under MIT (https://github.com/biggora/bootstrap-ajax-typeahead/blob/master/LICENSE)
  * See Demo: http://plugins.upbootstrap.com/bootstrap-ajax-typeahead
- * Updated: 2014-01-26 12:16:59
+ * Updated: 2014-02-09 02:4:38
  *
- * Modifications by Paul Warelis
+ * Modifications by Paul Warelis and Alexey Gordeyev
  */
 !function($) {
 

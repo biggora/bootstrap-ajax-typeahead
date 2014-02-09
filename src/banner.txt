@@ -1,7 +1,7 @@
 /*!
  * <%- pkg.name %>.js v<%- pkg.version %> (http://www.upbootstrap.com)
  * Copyright 2012-<%- grunt.template.today("yyyy") %> Twitter Inc.
- * Licensed under http://www.apache.org/licenses/LICENSE-2.0
+ * Licensed under <%= _.pluck(pkg.licenses, "type") %> (<%= _.pluck(pkg.licenses, "url") %>)
  * See Demo: http://plugins.upbootstrap.com/bootstrap-ajax-typeahead
  * Updated: <%- grunt.template.today("yyyy-mm-dd hh:M:ss") %>
  *
