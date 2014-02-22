@@ -5,6 +5,7 @@
     "private": true,
     "keywords": [ "bootstrap", "typeahead", "autocomplete", "ajax" ],
     "homepage": "https://github.com/biggora/bootstrap-ajax-typeahead",
+    "demopage": "http://plugins.upbootstrap.com/bootstrap-ajax-typeahead",
     "repository": {
         "type": "git",
         "url": "git://github.com/biggora/bootstrap-ajax-typeahead.git"

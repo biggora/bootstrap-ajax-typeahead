@@ -534,7 +534,8 @@ Browser Support
 
 ### Recommend extensions
 
-- [Bootstrap Fancy File Plugin](http://biggora.github.io/bootstrap-fancyfile/)
+- [Bootstrap Fancy File Plugin](https://github.com/biggora/bootstrap-fancyfile/)
+- [Bootstrap Select Plugin](https://github.com/biggora/bootstrap-select/)
 - [TrinteJS - Javascrpt MVC Framework for Node.JS](http://www.trintejs.com/)
 - [CaminteJS - Cross-db ORM for NodeJS](http://www.camintejs.com/)
 - [MongoDB Session Storage for ExpressJS](https://github.com/biggora/express-mongodb)
@@ -544,22 +545,32 @@ Browser Support
 Copyright and license
 -------
 
-Copyright 2012 Twitter, Inc.
+The MIT License (MIT)
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this work except in compliance with the License.
-You may obtain a copy of the License in the LICENSE file, or at:
+Copyright (c) 2011-2014 Twitter, Inc
 
-  [http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0)
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
 
 ## Resources
 
 - Visit the [author website](http://www.gordejev.lv).
 - Follow [@biggora](https://twitter.com/#!/biggora) on Twitter for updates.
 - Report issues on the [github issues](https://github.com/biggora/bootstrap-ajax-typeahead/issues) page.
+
+[![Analytics](https://ga-beacon.appspot.com/UA-22788134-5/ajax-typeahead/readme)](https://github.com/igrigorik/ga-beacon)
