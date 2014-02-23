@@ -574,3 +574,6 @@ THE SOFTWARE.
 - Report issues on the [github issues](https://github.com/biggora/bootstrap-ajax-typeahead/issues) page.
 
 [![Analytics](https://ga-beacon.appspot.com/UA-22788134-5/ajax-typeahead/readme)](https://github.com/igrigorik/ga-beacon)
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/biggora/bootstrap-ajax-typeahead/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
