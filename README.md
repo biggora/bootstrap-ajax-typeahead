@@ -245,6 +245,19 @@ Options
         </td>
     </tr>
     <tr>
+     <td>scrollBar</td>
+     <td>boolean</td>
+     <td>false</td>
+     <td>
+       Used to show scrollBar when there are too many match records and it's set to True.<br/><br/>
+	   If this option is set to true,the items value will be <i>100</i> and the HTML render menu will be set to:<br/>
+		<i>'&lt;ul 
+			class=&quot;typeahead dropdown-menu&quot; 
+			style=&quot;max-height:220px;overflow:auto;&quot;  
+		&gt;&lt;/ul&gt;'<i>
+     </td>
+    </tr>
+    <tr>
         <td>
             source
         </td>

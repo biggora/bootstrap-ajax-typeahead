@@ -57,6 +57,7 @@ THE SOFTWARE.
                 <li><a href="#tab-demo4" data-toggle="tab">Demo #4</a></li>
                 <li><a href="#tab-demo5" data-toggle="tab">Demo #5</a></li>
                 <li><a href="#tab-demo6" data-toggle="tab">Demo #6</a></li>
+				<li><a href="#tab-demo7" data-toggle="tab">Demo #7</a></li>
             </ul>
             <!-- Tab panes -->
             <div class="tab-content">
@@ -192,6 +193,42 @@ THE SOFTWARE.
                         </pre>
                     </div>
                 </div>
+
+                <div class="tab-pane" id="tab-demo7">
+                    <h3>Demo #7</h3>
+                    <div class="well col-md-5">
+                        <input id="demo7" type="text" class="col-md-12 form-control" placeholder="Search cities..." autocomplete="off" />
+                    </div>
+                    <div class="col-md-7">
+                        <pre class="prettyprint">
+
+    $('#demo7').typeahead({
+         source: ['Toronto',
+                 'Toronto1',
+		 'Toronto2',
+                 'Toronto3',
+		 'Toronto4',
+                 'Toronto5',
+                 'Toronto6',
+                 'Toronto7',
+                 'Toronto8',
+                 'Toronto9',
+                 'Toronto10',
+                 'Montreal',
+                 'New York', 
+                 'Buffalo', 
+                 'Boston', 
+                 'Columbus', 
+                 'Dallas', 
+                 'Vancouver', 
+                 'Seattle', 
+                 'Los Angeles'],
+                 scrollBar:true
+    });
+                        </pre>
+                    </div>
+                </div>
+
             </div>
         </div>
 
@@ -295,6 +332,31 @@ THE SOFTWARE.
                         'Vancouver',
                         'Seattle',
                         'Los Angeles'],
+                    onSelect: displayResult
+                });
+				$('#demo7').typeahead({
+                    source: [
+                        'Toronto',
+						'Toronto1',
+						'Toronto2',
+						'Toronto3',
+						'Toronto4',
+						'Toronto5',
+						'Toronto6',
+						'Toronto7',
+						'Toronto8',
+						'Toronto9',
+						'Toronto10',
+                        'Montreal',
+                        'New York',
+                        'Buffalo',
+                        'Boston',
+                        'Columbus',
+                        'Dallas',
+                        'Vancouver',
+                        'Seattle',
+                        'Los Angeles'],
+					scrollBar:true,
                     onSelect: displayResult
                 });
             });

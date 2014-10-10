@@ -15,6 +15,14 @@
      * ================================= */
 
     var Typeahead = function(element, options) {
+        
+		//deal with scrollBar
+		var defaultOptions=$.fn.typeahead.defaults;
+		if(options.scrollBar){
+			options.items=100;
+			options.menu='<ul class="typeahead dropdown-menu" style="max-height:220px;overflow:auto;"></ul>';
+		}
+
         var that = this;
         that.$element = $(element);
         that.options = $.extend({}, $.fn.typeahead.defaults, options);
@@ -292,23 +300,43 @@
         },
         next: function(event) {
             var active = this.$menu.find('.active').removeClass('active'),
-                    next = active.next();
+            next = active.next();
 
             if (!next.length) {
                 next = $(this.$menu.find('li')[0]);
             }
+            
+			if(this.options.scrollBar){
+				var index=this.$menu.children("li").index(next);
+				if(index%8==0){
+					this.$menu.scrollTop(index*26);
+				}
+			}
 
             next.addClass('active');
         },
         prev: function(event) {
             var active = this.$menu.find('.active').removeClass('active'),
-                    prev = active.prev();
-
+            prev = active.prev();
+			
             if (!prev.length) {
                 prev = this.$menu.find('li').last();
             }
 
+			if(this.options.scrollBar){
+				
+				var $li=this.$menu.children("li");
+				var total=$li.length-1;
+				var index=$li.index(prev);
+		    
+				if((total-index)%8==0){
+					this.$menu.scrollTop((index-7)*26);
+				}
+
+			}
+
             prev.addClass('active');
+		
         },
         listen: function() {
             this.$element
@@ -436,9 +464,10 @@
     $.fn.typeahead.defaults = {
         source: [],
         items: 8,
-        menu: '<ul class="typeahead dropdown-menu"></ul>',
+		menu: '<ul class="typeahead dropdown-menu"></ul>',
         item: '<li><a href="#"></a></li>',
         displayField: 'name',
+		scrollBar:false,
         valueField: 'id',
         onSelect: function() {
         },
