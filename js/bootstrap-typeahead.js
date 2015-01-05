@@ -16,12 +16,12 @@
 
     var Typeahead = function(element, options) {
         
-		//deal with scrollBar
-		var defaultOptions=$.fn.typeahead.defaults;
-		if(options.scrollBar){
-			options.items=100;
-			options.menu='<ul class="typeahead dropdown-menu" style="max-height:220px;overflow:auto;"></ul>';
-		}
+        //deal with scrollBar
+        var defaultOptions=$.fn.typeahead.defaults;
+        if(options.scrollBar){
+            options.items=100;
+            options.menu='<ul class="typeahead dropdown-menu" style="max-height:220px;overflow:auto;"></ul>';
+        }
 
         var that = this;
         that.$element = $(element);
@@ -150,6 +150,7 @@
                     this.ajax.xhr = null;
                     this.ajaxToggleLoadClass(false);
                 }
+
                 return this.shown ? this.hide() : this;
             }
 
@@ -188,7 +189,8 @@
             }
             // Save for selection retreival
             that.ajax.data = data;
-
+            
+            
             // Manipulate objects
             items = that.grepper(that.ajax.data) || [];
             if (!items.length) {
@@ -205,7 +207,6 @@
         },
         lookup: function(event) {
             var that = this, items;
-
             if (that.ajax) {
                 that.ajaxer();
             }
@@ -218,10 +219,14 @@
 
                 items = that.grepper(that.source);
 
-                if (!items || !items.length) {
+
+                if (!items ) {
                     return that.shown ? that.hide() : that;
                 }
-
+                //Bhanu added a custom message- Result not Found when no result is found
+                if(items.length == 0){
+                    items[0] = { 'id': -21, 'name': "Result not Found"}
+                }
                 return that.render(items.slice(0, that.options.items)).show();
             }
         },
@@ -269,8 +274,9 @@
                 i.find('a').html(that.highlighter(display));
                 return i[0];
             });
-
+      
             items.first().addClass('active');
+            
             this.$menu.html(items);
             return this;
         },
@@ -306,37 +312,37 @@
                 next = $(this.$menu.find('li')[0]);
             }
             
-			if(this.options.scrollBar){
-				var index=this.$menu.children("li").index(next);
-				if(index%8==0){
-					this.$menu.scrollTop(index*26);
-				}
-			}
+            if(this.options.scrollBar){
+                var index=this.$menu.children("li").index(next);
+                if(index%8==0){
+                    this.$menu.scrollTop(index*26);
+                }
+            }
 
             next.addClass('active');
         },
         prev: function(event) {
             var active = this.$menu.find('.active').removeClass('active'),
             prev = active.prev();
-			
+            
             if (!prev.length) {
                 prev = this.$menu.find('li').last();
             }
 
-			if(this.options.scrollBar){
-				
-				var $li=this.$menu.children("li");
-				var total=$li.length-1;
-				var index=$li.index(prev);
-		    
-				if((total-index)%8==0){
-					this.$menu.scrollTop((index-7)*26);
-				}
+            if(this.options.scrollBar){
+                
+                var $li=this.$menu.children("li");
+                var total=$li.length-1;
+                var index=$li.index(prev);
+            
+                if((total-index)%8==0){
+                    this.$menu.scrollTop((index-7)*26);
+                }
 
-			}
+            }
 
             prev.addClass('active');
-		
+        
         },
         listen: function() {
             this.$element
@@ -464,10 +470,10 @@
     $.fn.typeahead.defaults = {
         source: [],
         items: 8,
-		menu: '<ul class="typeahead dropdown-menu"></ul>',
+        menu: '<ul class="typeahead dropdown-menu"></ul>',
         item: '<li><a href="#"></a></li>',
         displayField: 'name',
-		scrollBar:false,
+        scrollBar:false,
         valueField: 'id',
         onSelect: function() {
         },
