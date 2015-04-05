@@ -43,7 +43,6 @@ Installation
 
 #### Include files in your HTML. The minimum required for this plugin are:
 
-    <link href="/path/to/bootstrap.css" rel="stylesheet">
     <script src="/path/to/jquery.js" type="text/javascript"></script>
     <script src="/path/to/bootstrap-typeahead.js" type="text/javascript"></script>
 
