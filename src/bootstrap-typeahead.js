@@ -445,6 +445,23 @@
             this.mousedover = false
             if (!this.focused && this.shown)
                 this.hide()
+        },
+        destroy: function() {
+            this.$element
+                .off('focus', $.proxy(this.focus, this))
+                .off('blur', $.proxy(this.blur, this))
+                .off('keypress', $.proxy(this.keypress, this))
+                .off('keyup', $.proxy(this.keyup, this));
+
+            if (this.eventSupported('keydown')) {
+                this.$element.off('keydown', $.proxy(this.keydown, this))
+            }
+
+            this.$menu
+                .off('click', $.proxy(this.click, this))
+                .off('mouseenter', 'li', $.proxy(this.mouseenter, this))
+                .off('mouseleave', 'li', $.proxy(this.mouseleave, this))
+            this.$element.removeData('typeahead');
         }
     };
 

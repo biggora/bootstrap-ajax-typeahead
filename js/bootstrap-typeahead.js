@@ -3,7 +3,7 @@
  * Copyright 2012-2015 Twitter Inc.
  * Licensed under MIT (https://github.com/biggora/bootstrap-ajax-typeahead/blob/master/LICENSE)
  * See Demo: http://plugins.upbootstrap.com/bootstrap-ajax-typeahead
- * Updated: 2015-04-05 11:25:41
+ * Updated: 2015-04-05 11:43:56
  *
  * Modifications by Paul Warelis and Alexey Gordeyev
  */
@@ -454,6 +454,23 @@
             this.mousedover = false
             if (!this.focused && this.shown)
                 this.hide()
+        },
+        destroy: function() {
+            this.$element
+                .off('focus', $.proxy(this.focus, this))
+                .off('blur', $.proxy(this.blur, this))
+                .off('keypress', $.proxy(this.keypress, this))
+                .off('keyup', $.proxy(this.keyup, this));
+
+            if (this.eventSupported('keydown')) {
+                this.$element.off('keydown', $.proxy(this.keydown, this))
+            }
+
+            this.$menu
+                .off('click', $.proxy(this.click, this))
+                .off('mouseenter', 'li', $.proxy(this.mouseenter, this))
+                .off('mouseleave', 'li', $.proxy(this.mouseleave, this))
+            this.$element.removeData('typeahead');
         }
     };
 
