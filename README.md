@@ -224,7 +224,7 @@ Options
             integer
         </td>
         <td>
-            8
+            10
         </td>
         <td>
 	    The maximum number of items to show in the results.
@@ -256,6 +256,20 @@ Options
 			style=&quot;max-height:220px;overflow:auto;&quot;  
 		&gt;&lt;/ul&gt;'<i>
      </td>
+    </tr>
+     <tr>
+         <td>
+                alignWidth
+            </td>
+    		<td>
+                boolean
+            </td>
+            <td>
+                true
+            </td>
+            <td>
+    			The align dropdown width by input field width.
+            </td>
     </tr>
     <tr>
         <td>

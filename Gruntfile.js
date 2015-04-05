@@ -8,7 +8,7 @@ module.exports = function(grunt) {
     // Force use of Unix newlines
     grunt.util.linefeed = '\n';
     grunt.file.defaultEncoding = 'utf8';
-    
+
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         banner: grunt.file.read('./src/banner.txt'),

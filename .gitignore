@@ -1,6 +1,7 @@
 /nbproject
 /node_modules
 /bower_components
-/.idea
+/.idea/
+/nginx
 /validation-report.json
 /validation-status.json
