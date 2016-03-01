@@ -158,17 +158,25 @@
                 // Cancel last call if already in progress
                 if (this.ajax.xhr)
                     this.ajax.xhr.abort();
-
-                var params = this.ajax.preDispatch ? this.ajax.preDispatch(query) : {
-                    query: query
-                };
-                this.ajax.xhr = $.ajax({
-                    url: this.ajax.url,
-                    data: params,
+                
+                var ajax = {
                     success: $.proxy(this.ajaxSource, this),
                     type: this.ajax.method || 'get',
                     dataType: 'json'
-                });
+                };
+
+                if (typeof this.ajax.url === 'string') {
+                    var params = this.ajax.preDispatch ? this.ajax.preDispatch(query) : {
+                        query: query
+                    };
+                    ajax.url = this.ajax.url;
+                    ajax.data = params;
+                } else {
+                    ajax.url = this.ajax.url(query);
+                    ajax.data = {};
+                }
+                
+                this.ajax.xhr = $.ajax(ajax);
                 this.ajax.timerId = null;
             }
 
