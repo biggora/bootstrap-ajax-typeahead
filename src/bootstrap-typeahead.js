@@ -1,3 +1,12 @@
+/*!
+ * bootstrap-typeahead.js v0.0.5 (http://www.upbootstrap.com)
+ * Copyright 2012-2015 Twitter Inc.
+ * Licensed under MIT (https://github.com/biggora/bootstrap-ajax-typeahead/blob/master/LICENSE)
+ * See Demo: http://plugins.upbootstrap.com/bootstrap-ajax-typeahead
+ * Updated: 2015-04-05 11:43:56
+ *
+ * Modifications by Paul Warelis and Alexey Gordeyev
+ */
 !function ($) {
 
     "use strict"; // jshint ;_;
@@ -231,16 +240,19 @@
             return ~item.toLowerCase().indexOf(this.query.toLowerCase());
         },
         sorter: function (items) {
-            if (!this.options.ajax) {
+            if (!this.options.ajax || !this.options.ajax.url) {
                 var beginswith = [],
                     caseSensitive = [],
                     caseInsensitive = [],
-                    item;
+                    isString = typeof this.options.displayField === 'string',
+                    item,
+                    compare;
 
                 while (item = items.shift()) {
-                    if (!item.toLowerCase().indexOf(this.query.toLowerCase()))
+                    compare = isString && item.hasOwnProperty(this.options.displayField) ? item[this.options.displayField] : item;
+                    if (!compare.toLowerCase().indexOf(this.query.toLowerCase()))
                         beginswith.push(item);
-                    else if (~item.indexOf(this.query))
+                    else if (~compare.indexOf(this.query))
                         caseSensitive.push(item);
                     else
                         caseInsensitive.push(item);

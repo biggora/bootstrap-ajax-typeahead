@@ -240,16 +240,19 @@
             return ~item.toLowerCase().indexOf(this.query.toLowerCase());
         },
         sorter: function (items) {
-            if (!this.options.ajax) {
+            if (!this.options.ajax || !this.options.ajax.url) {
                 var beginswith = [],
                     caseSensitive = [],
                     caseInsensitive = [],
-                    item;
+                    isString = typeof this.options.displayField === 'string',
+                    item,
+                    compare;
 
                 while (item = items.shift()) {
-                    if (!item.toLowerCase().indexOf(this.query.toLowerCase()))
+                    compare = isString && item.hasOwnProperty(this.options.displayField) ? item[this.options.displayField] : item;
+                    if (!compare.toLowerCase().indexOf(this.query.toLowerCase()))
                         beginswith.push(item);
-                    else if (~item.indexOf(this.query))
+                    else if (~compare.indexOf(this.query))
                         caseSensitive.push(item);
                     else
                         caseInsensitive.push(item);
