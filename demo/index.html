@@ -58,6 +58,7 @@ THE SOFTWARE.
                 <li><a href="#tab-demo5" data-toggle="tab">Demo #5</a></li>
                 <li><a href="#tab-demo6" data-toggle="tab">Demo #6</a></li>
 				<li><a href="#tab-demo7" data-toggle="tab">Demo #7</a></li>
+                <li><a href="#tab-demo8" data-toggle="tab">Demo #8</a></li>
             </ul>
             <!-- Tab panes -->
             <div class="tab-content">
@@ -228,6 +229,27 @@ THE SOFTWARE.
                         </pre>
                     </div>
                 </div>
+                <div class="tab-pane" id="tab-demo8">
+                    <h3>Demo #8</h3>
+                    <div class="well col-md-5">
+                        <input id="demo8" type="text" class="col-md-12 form-control" placeholder="Search cities..." autocomplete="off" />
+                    </div>
+                    <div class="col-md-7">
+                        <pre class="prettyprint">
+
+    $('#demo8').typeahead({
+        autoSelect: false,
+        source: [
+            { ID: 1, Name: 'Toronto' },
+            { ID: 2, Name: 'Montreal' },
+            { ID: 3, Name: 'New York' },
+        ],
+        display: 'Name',
+        val: 'ID'
+    });
+                        </pre>
+                    </div>
+                </div>
 
             </div>
         </div>
@@ -358,6 +380,16 @@ THE SOFTWARE.
                         'Los Angeles'],
 					scrollBar:true,
                     onSelect: displayResult
+                });
+                $('#demo8').typeahead({
+                    autoSelect:false,
+                    source: [
+                        {ID: 1, Name: 'Toronto'},
+                        {ID: 2, Name: 'Montreal'},
+                        {ID: 3, Name: 'New York'}
+                    ],
+                    displayField: 'Name',
+                    valueField: 'ID'
                 });
             });
         </script>
