@@ -1,9 +1,9 @@
 /*!
  * bootstrap-typeahead.js v0.0.5 (http://www.upbootstrap.com)
- * Copyright 2012-2015 Twitter Inc.
+ * Copyright 2012-2016 Twitter Inc.
  * Licensed under MIT (https://github.com/biggora/bootstrap-ajax-typeahead/blob/master/LICENSE)
  * See Demo: http://plugins.upbootstrap.com/bootstrap-ajax-typeahead
- * Updated: 2015-04-05 11:43:56
+ * Updated: 2016-08-02 03:16:15
  *
  * Modifications by Paul Warelis and Alexey Gordeyev
  */
@@ -40,6 +40,7 @@
         that.source = that.options.source || that.source;
         that.displayField = that.options.displayField || that.displayField;
         that.valueField = that.options.valueField || that.valueField;
+        that.autoSelect = that.options.autoSelect || that.autoSelect;
 
         if (that.options.ajax) {
             var ajax = that.options.ajax;
@@ -90,18 +91,20 @@
         },
         select: function () {
             var $selectedItem = this.$menu.find('.active');
-            var value = $selectedItem.attr('data-value');
-            var text = this.$menu.find('.active a').text();
+            if($selectedItem.length) {
+                var value = $selectedItem.attr('data-value');
+                var text = this.$menu.find('.active a').text();
 
-            if (this.options.onSelect) {
-                this.options.onSelect({
-                    value: value,
-                    text: text
-                });
+                if (this.options.onSelect) {
+                    this.options.onSelect({
+                        value: value,
+                        text: text
+                    });
+                }
+                this.$element
+                    .val(this.updater(text))
+                    .change();
             }
-            this.$element
-                .val(this.updater(text))
-                .change();
             return this.hide();
         },
         updater: function (item) {
@@ -281,7 +284,9 @@
                 return i[0];
             });
 
-            items.first().addClass('active');
+            if(that.autoSelect){
+                items.first().addClass('active');
+            }
 
             this.$menu.html(items);
             return this;
@@ -499,6 +504,7 @@
         item: '<li><a href="#"></a></li>',
         valueField: 'id',
         displayField: 'name',
+        autoSelect: true,
         onSelect: function () {
         },
         ajax: {
