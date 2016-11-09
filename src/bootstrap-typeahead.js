@@ -28,6 +28,7 @@
         that.render = that.options.render || that.render;
         that.onSelect = that.options.onSelect || null;
         that.sorter = that.options.sorter || that.sorter;
+        that.select = that.options.select || that.select;
         that.source = that.options.source || that.source;
         that.displayField = that.options.displayField || that.displayField;
         that.valueField = that.options.valueField || that.valueField;
@@ -86,15 +87,16 @@
                 var value = $selectedItem.attr('data-value');
                 var text = this.$menu.find('.active a').text();
 
+                this.$element
+                    .val(this.updater(text))
+                    .change();
+
                 if (this.options.onSelect) {
                     this.options.onSelect({
                         value: value,
                         text: text
                     });
                 }
-                this.$element
-                    .val(this.updater(text))
-                    .change();
             }
             return this.hide();
         },
