@@ -332,7 +332,7 @@ Ajax Options
             null
         </td>
         <td>
-
+		URL to fetch results from
         </td>
     </tr>
     <tr>
@@ -389,7 +389,7 @@ Ajax Options
             null
         </td>
         <td>
-
+		Class to add while loading
         </td>
     </tr>
     <tr>
