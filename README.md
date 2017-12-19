@@ -332,7 +332,7 @@ Ajax Options
             null
         </td>
         <td>
-
+            URL called during AJAX request
         </td>
     </tr>
     <tr>
