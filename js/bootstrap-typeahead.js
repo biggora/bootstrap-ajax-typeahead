@@ -22,6 +22,9 @@
             options.items = 100;
             options.menu = '<ul class="typeahead dropdown-menu" style="max-height:220px;overflow:auto;"></ul>';
         }
+		
+        // html content to display when no results are found
+        options.resultNotFoundMsgBody = "<div><p>Sorry! We've got no result for your query</p></div>";
 
         var that = this;
         that.$element = $(element);
@@ -237,7 +240,8 @@
                 }
                 //Bhanu added a custom message- Result not Found when no result is found
                 if (items.length == 0) {
-                    items[0] = {'id': -21, 'name': "Result not Found"}
+                    items[0] = {'id': -21, 'name': that.options.resultNotFoundMsgBody};
+                    return that.render(items.slice(0, that.options.items), false).show();
                 }
                 return that.render(items.slice(0, that.options.items)).show();
             }
