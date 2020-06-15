@@ -133,7 +133,7 @@
 
             var query = $.trim(this.$element.val());
 
-            if (query === this.query) {
+            if (query && (query === this.query)) {
                 return this;
             }
 
@@ -146,7 +146,7 @@
                 this.ajax.timerId = null;
             }
 
-            if (!query || query.length < this.ajax.triggerLength) {
+            if ((this.ajax.triggerLength > 0 && !query) || (query.length < this.ajax.triggerLength)) {
                 // cancel the ajax callback if in progress
                 if (this.ajax.xhr) {
                     this.ajax.xhr.abort();
@@ -351,19 +351,19 @@
         },
         listen: function () {
             this.$element
-                .on('focus', $.proxy(this.focus, this))
-                .on('blur', $.proxy(this.blur, this))
-                .on('keypress', $.proxy(this.keypress, this))
-                .on('keyup', $.proxy(this.keyup, this));
+                .on('focus.bs-typeahead', $.proxy(this.focus, this))
+                .on('blur.bs-typeahead', $.proxy(this.blur, this))
+                .on('keypress.bs-typeahead', $.proxy(this.keypress, this))
+                .on('keyup.bs-typeahead', $.proxy(this.keyup, this));
 
             if (this.eventSupported('keydown')) {
-                this.$element.on('keydown', $.proxy(this.keydown, this))
+                this.$element.on('keydown.bs-typeahead', $.proxy(this.keydown, this))
             }
 
             this.$menu
-                .on('click', $.proxy(this.click, this))
-                .on('mouseenter', 'li', $.proxy(this.mouseenter, this))
-                .on('mouseleave', 'li', $.proxy(this.mouseleave, this))
+                .on('click.bs-typeahead', $.proxy(this.click, this))
+                .on('mouseenter.bs-typeahead', 'li', $.proxy(this.mouseenter, this))
+                .on('mouseleave.bs-typeahead', 'li', $.proxy(this.mouseleave, this))
         },
         move: function (e) {
             if (!this.shown)
@@ -432,6 +432,9 @@
         },
         focus: function (e) {
             this.focused = true
+            if (this.ajax && this.ajax.triggerLength < 0) {
+                this.ajaxLookup()
+            }
         },
         blur: function (e) {
             this.focused = false
@@ -456,19 +459,19 @@
         },
         destroy: function() {
             this.$element
-                .off('focus', $.proxy(this.focus, this))
-                .off('blur', $.proxy(this.blur, this))
-                .off('keypress', $.proxy(this.keypress, this))
-                .off('keyup', $.proxy(this.keyup, this));
+                .off('focus.bs-typeahead', $.proxy(this.focus, this))
+                .off('blur.bs-typeahead', $.proxy(this.blur, this))
+                .off('keypress.bs-typeahead', $.proxy(this.keypress, this))
+                .off('keyup.bs-typeahead', $.proxy(this.keyup, this));
 
             if (this.eventSupported('keydown')) {
-                this.$element.off('keydown', $.proxy(this.keydown, this))
+                this.$element.off('keydown.bs-typeahead', $.proxy(this.keydown, this))
             }
 
             this.$menu
-                .off('click', $.proxy(this.click, this))
-                .off('mouseenter', 'li', $.proxy(this.mouseenter, this))
-                .off('mouseleave', 'li', $.proxy(this.mouseleave, this))
+                .off('click.bs-typeahead', $.proxy(this.click, this))
+                .off('mouseenter.bs-typeahead', 'li', $.proxy(this.mouseenter, this))
+                .off('mouseleave.bs-typeahead', 'li', $.proxy(this.mouseleave, this))
             this.$element.removeData('typeahead');
         }
     };
